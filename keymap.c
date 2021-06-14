@@ -46,8 +46,7 @@
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
-  ST_MACRO_0,
-  ST_MACRO_1,
+  ST_MACRO_0, // Start next game on klavogonki.ru
 };
 
 
@@ -75,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_EQUAL,                                       KC_TRANSPARENT, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           RU_MINS,        
     OSL(3),         RU_SHTI,        RU_TSE,         RU_U,           RU_KA,          TD(DANCE_1),    KC_LBRACKET,                                    RU_DOT,         RU_EN,          RU_GHE,         RU_SHA,         RU_SHCH,        RU_ZE,          RU_HA,          
     KC_TRANSPARENT, RU_EF,          RU_YERU,        RU_VE,          RU_A,           RU_PE,          KC_RBRACKET,                                                                    LSFT(RU_DOT),   RU_ER,          RU_O,           RU_EL,          RU_DE,          RU_ZHE,         RU_E,           
-    KC_CAPSLOCK,    RU_YA,          RU_CHE,         RU_ES,          RU_EM,          RU_I,                                           RU_TE,          TD(DANCE_3),    RU_BE,          RU_YU,          RU_DOT,         ST_MACRO_1,     
+    KC_CAPSLOCK,    RU_YA,          RU_CHE,         RU_ES,          RU_EM,          RU_I,                                           RU_TE,          TD(DANCE_3),    RU_BE,          RU_YU,          RU_DOT,         ST_MACRO_0,     
     KC_TRANSPARENT, TD(DANCE_2),    KC_LGUI,        KC_LALT,        KC_LCTRL,       TO(0),                                                                                                          KC_TRANSPARENT, TT(2),          TT(3),          TT(4),          KC_BSLASH,      LGUI(RU_EL),    
     KC_SPACE,       KC_BSPACE,      KC_DELETE,                      KC_TAB,         KC_ENTER,       LSFT_T(KC_NO)
   ),
@@ -166,13 +165,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
-      SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)) SS_DELAY(100) SS_LCTL(SS_TAP(X_ENTER)));
-
-    }
-    break;
-    case ST_MACRO_1:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)) SS_DELAY(100) SS_LCTL(SS_TAP(X_ENTER)));
+      SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)) SS_DELAY(1000) SS_LCTL(SS_TAP(X_ENTER)));
 
     }
     break;
