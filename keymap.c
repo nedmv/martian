@@ -64,15 +64,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TG(1),          KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_RBRACKET,                                                                    KC_COMMA,       KC_H,           KC_J,           KC_K,           KC_L,           LT(3,KC_SCOLON),LGUI_T(KC_QUOTE),
     KC_CAPSLOCK,    KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         RCTL_T(KC_SLASH),ST_MACRO_0,     
     KC_GRAVE,       TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,       KC_TRANSPARENT,                                                                                                 TO(1),          TT(2),          TT(3),          TT(4),          KC_BSLASH,      LGUI(KC_L),     
-    KC_SPACE,       KC_BSPACE,      KC_DELETE,                      KC_TAB,         KC_ENTER,       LSFT_T(KC_NO)
+    KC_SPACE,       KC_BSPACE,      KC_DELETE,                      KC_TAB,         KC_ENTER,       KC_LSHIFT
   ),
   [1] = LAYOUT_moonlander(
     KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_EQUAL,                                       KC_TRANSPARENT, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           RU_MINS,        
     OSL(3),         RU_SHTI,        RU_TSE,         RU_U,           RU_KA,          TD(DANCE_1),    KC_LBRACKET,                                    RU_DOT,         RU_EN,          RU_GHE,         RU_SHA,         RU_SHCH,        RU_ZE,          RU_HA,          
     KC_TRANSPARENT, RU_EF,          RU_YERU,        RU_VE,          RU_A,           RU_PE,          KC_RBRACKET,                                                                    LSFT(RU_DOT),   RU_ER,          RU_O,           RU_EL,          RU_DE,          RU_ZHE,         RU_E,           
     KC_CAPSLOCK,    RU_YA,          RU_CHE,         RU_ES,          RU_EM,          RU_I,                                           RU_TE,          TD(DANCE_2),    RU_BE,          RU_YU,          RU_DOT,         ST_MACRO_0,     
-    KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,       TO(0),                                                                                                          KC_TRANSPARENT, TT(2),          TT(3),          TT(4),          KC_BSLASH,      LGUI(RU_EL),    
-    KC_SPACE,       KC_BSPACE,      KC_DELETE,                      KC_TAB,         KC_ENTER,       LSFT_T(KC_NO)
+    KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,       TO(0),                                                                                                          KC_TRANSPARENT, TT(2),          TT(3),          TT(4),          KC_BSLASH,      LGUI(KC_L),    
+    KC_SPACE,       KC_BSPACE,      KC_DELETE,                      KC_TAB,         KC_ENTER,       KC_LSHIFT
   ),
   [2] = LAYOUT_moonlander(
     KC_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_TRANSPARENT, 
