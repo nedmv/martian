@@ -1,61 +1,9 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "keymap_german.h"
-#include "keymap_nordic.h"
-#include "keymap_french.h"
-#include "keymap_spanish.h"
-#include "keymap_hungarian.h"
-#include "keymap_swedish.h"
-#include "keymap_br_abnt2.h"
-#include "keymap_canadian_multilingual.h"
-#include "keymap_german_ch.h"
-#include "keymap_jp.h"
-#include "keymap_korean.h"
-#include "keymap_bepo.h"
-#include "keymap_italian.h"
-#include "keymap_slovenian.h"
-#include "keymap_lithuanian_azerty.h"
-#include "keymap_danish.h"
-#include "keymap_norwegian.h"
-#include "keymap_portuguese.h"
-#include "keymap_contributions.h"
-#include "keymap_czech.h"
-#include "keymap_romanian.h"
 #include "keymap_russian.h"
-#include "keymap_uk.h"
-#include "keymap_estonian.h"
-#include "keymap_belgian.h"
-#include "keymap_us_international.h"
-
-#define KC_MAC_UNDO LGUI(KC_Z)
-#define KC_MAC_CUT LGUI(KC_X)
-#define KC_MAC_COPY LGUI(KC_C)
-#define KC_MAC_PASTE LGUI(KC_V)
-#define KC_PC_UNDO LCTL(KC_Z)
-#define KC_PC_CUT LCTL(KC_X)
-#define KC_PC_COPY LCTL(KC_C)
-#define KC_PC_PASTE LCTL(KC_V)
-#define ES_LESS_MAC KC_GRAVE
-#define ES_GRTR_MAC LSFT(KC_GRAVE)
-#define ES_BSLS_MAC ALGR(KC_6)
-#define NO_PIPE_ALT KC_GRAVE
-#define NO_BSLS_ALT KC_EQUAL
-#define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
-#define BP_NDSH_MAC ALGR(KC_8)
-#define MOON_LED_LEVEL LED_LEVEL
 
 #define CASH(KC)  LALT(LCTL(LSFT(KC))) // CASH does not work as expected
-#define KC_LSWAP KC_CAPSLOCK
-
-enum Layers {
-  // Language layers MUST be 0 and 1
-  L_EN = 0, // Base English layer, based on QWERTY
-  L_RU = 1, // Base Russian layer, based on ЙЦУКЕН
-
-  L_MOVE = 2, // Movement layer (arrows, mouse, F1-F12)
-  L_PROG = 3, // Program layer (Meh hotkeys, media)
-  L_KEEB = 4, // Keyboard layer (lighting, sound, reset)
-};
+#define KC_LSWAP KC_CAPSLOCK //TODO: add ability to change hotkey
 
 #define LAYOUT_ML( \
     k00, k01, k02, k03, k04, k05, k06, \
@@ -84,106 +32,115 @@ LAYOUT_moonlander( \
 )
 
 
+enum layers {
+  // Language layers MUST be 0 and 1
+  L_EN = 0, // Base English layer, based on QWERTY
+  L_RU = 1, // Base Russian layer, based on ЙЦУКЕН
+
+  L_MOVE = 2, // Movement layer (arrows, mouse, F1-F12)
+  L_PROG = 3, // Program layer (Meh hotkeys, media)
+  L_KEEB = 4, // Keyboard layer (lighting, sound, reset)
+};
+
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
-  ST_MACRO_0, // Start next game on klavogonki.ru
+  GONKI, // Start next race on klavogonki.ru
   TO_RU, //Invert state of russian layer and toggle layout.
   L_ESCAPE, // TO layer 1, if it's active. Else TO layer 0.
 };
 
-
 enum tap_dance_codes {
-  DANCE_0, // [CUSTOM] Window snapshot - Area snapshot - ___ - ___ 
-  DANCE_1, // Russian "Е" - Russian "Ё" - ___ - ___
-  DANCE_2, // Russian "Ь" - Russian "Ъ" - ___ - ___
-  DANCE_3, // [CUSTOM] Add song to the end of queue - Add song to the beginning of queue - ___ - ___
+  D_SNAP, // [CUSTOM] Window snapshot - Area snapshot - ___ - ___ 
+  D_EYO, // Russian "Е" - Russian "Ё" - ___ - ___
+  D_SIGNS, // Russian "Ь" - Russian "Ъ" - ___ - ___
+  D_QUEUE, // [CUSTOM] Add song to the end of queue - Add song to the beginning of queue - ___ - ___
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_EN] = LAYOUT_ML(
-    KC_ESCAPE,   KC_1,         KC_2,       KC_3,     KC_4,      KC_5,  KC_EQUAL,
-    OSL(L_PROG),      KC_Q,         KC_W,       KC_E,     KC_R,      KC_T,  KC_LBRACKET,
-    TO_RU,       KC_A,         KC_S,       KC_D,     KC_F,      KC_G,  KC_RBRACKET,
-    KC_NO, KC_Z,         KC_X,       KC_C,     KC_V,      KC_B,
-    KC_GRAVE,    TD(DANCE_0),  KC_LGUI,    KC_LALT,  KC_LCTRL,
-    KC_NO,
-    KC_SPACE,    KC_BSPACE,    KC_DELETE,
+    KC_ESCAPE,   KC_1,           KC_2,        KC_3,          KC_4,           KC_5,      KC_EQUAL,
+    OSL(L_PROG), KC_Q,           KC_W,        KC_E,          KC_R,           KC_T,      KC_LBRACKET,
+    TO_RU,       KC_A,           KC_S,        KC_D,          KC_F,           KC_G,      KC_RBRACKET,
+    XXXXXXX,     KC_Z,           KC_X,        KC_C,          KC_V,           KC_B,
+    KC_GRAVE,    TD(D_SNAP),     KC_LGUI,     KC_LALT,       KC_LCTRL,
+    XXXXXXX,
+    KC_SPACE,    KC_BSPACE,      KC_DELETE,
     
-    KC_TRANSPARENT, KC_6,      KC_7,       KC_8,      KC_9,     KC_0,      KC_MINUS,
-    KC_DOT,         KC_Y,      KC_U,       KC_I,      KC_O,     KC_P,      KC_TRANSPARENT,
-    KC_COMMA,       KC_H,      KC_J,       KC_K,      KC_L,     KC_SCOLON, KC_QUOTE,
-    KC_N,           KC_M,      KC_COMMA,   KC_DOT,    KC_SLASH, ST_MACRO_0,
-    TT(L_MOVE),          TT(L_PROG),     TT(L_KEEB),      KC_BSLASH, LGUI(KC_L),
-    KC_NO,
-    KC_TAB,         KC_ENTER,       KC_LSHIFT
+    XXXXXXX,     KC_6,           KC_7,        KC_8,          KC_9,           KC_0,      KC_MINUS,
+    KC_DOT,      KC_Y,           KC_U,        KC_I,          KC_O,           KC_P,      XXXXXXX,
+    KC_COMMA,    KC_H,           KC_J,        KC_K,          KC_L,           KC_SCOLON, KC_QUOTE,
+    KC_N,        KC_M,           KC_COMMA,    KC_DOT,        KC_SLASH,       GONKI,
+    TT(L_MOVE),  TT(L_PROG),     TT(L_KEEB),  KC_BSLASH,     LGUI(KC_L),
+    XXXXXXX,
+    KC_TAB,      KC_ENTER,       KC_LSHIFT
   ),
   [L_RU] = LAYOUT_ML(
-    KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_EQUAL,
-    OSL(L_PROG),         RU_SHTI,        RU_TSE,         RU_U,           RU_KA,          TD(DANCE_1),    KC_LBRACKET,
-    TO_RU, RU_EF,          RU_YERU,        RU_VE,          RU_A,           RU_PE,          KC_RBRACKET,
-    KC_CAPSLOCK,    RU_YA,          RU_CHE,         RU_ES,          RU_EM,          RU_I,
-    KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,       
-    KC_NO,                                                                                                              
-    KC_SPACE,       KC_BSPACE,      KC_DELETE,
+    _______,      _______,       _______,     _______,       _______,        _______,    _______,
+    _______,      RU_SHTI,       RU_TSE,      RU_U,          RU_KA,          TD(D_EYO),  _______,
+    _______,      RU_EF,         RU_YERU,     RU_VE,         RU_A,           RU_PE,      _______,
+    _______,      RU_YA,         RU_CHE,      RU_ES,         RU_EM,          RU_I,
+    _______,      _______,       _______,     _______,       _______,       
+    _______,                                                                                                               
+    _______,      _______,       _______,
     
-    KC_TRANSPARENT, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           RU_MINS,
-    RU_DOT,         RU_EN,          RU_GHE,         RU_SHA,         RU_SHCH,        RU_ZE,          RU_HA,
-    LSFT(RU_DOT),   RU_ER,          RU_O,           RU_EL,          RU_DE,          RU_ZHE,         RU_E,                
-    RU_TE,          TD(DANCE_2),    RU_BE,          RU_YU,          RU_DOT,         ST_MACRO_0,
-    TT(L_MOVE),          TT(L_PROG),          TT(L_KEEB),          KC_BSLASH,      LGUI(KC_L),
-    KC_NO,
-    KC_TAB,         KC_ENTER,       KC_LSHIFT
+    _______,      _______,       _______,     _______,       _______,        _______,    RU_MINS,
+    RU_DOT,       RU_EN,         RU_GHE,      RU_SHA,        RU_SHCH,        RU_ZE,      RU_HA,
+    LSFT(RU_DOT), RU_ER,         RU_O,        RU_EL,         RU_DE,          RU_ZHE,     RU_E,                
+    RU_TE,        TD(D_SIGNS),   RU_BE,       RU_YU,         RU_DOT,         GONKI,
+    _______,      _______,       _______,     _______,       _______,
+    _______,
+    _______,      _______,       _______
   ),
   [L_MOVE] = LAYOUT_ML(
-    L_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_MS_LEFT,     KC_MS_UP,       KC_MS_DOWN,     KC_MS_RIGHT,    KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,
-    KC_NO,
-    KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_BTN3,
+    L_ESCAPE,     KC_F1,         KC_F2,       KC_F3,         KC_F4,          KC_F5,      _______,
+    _______,      _______,       _______,     _______,       _______,        _______,    _______,
+    _______,      KC_MS_LEFT,    KC_MS_UP,    KC_MS_DOWN,    KC_MS_RIGHT,    _______,    _______,
+    _______,      _______,       _______,     _______,       _______,        _______,
+    _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,
+    XXXXXXX,
+    KC_MS_BTN1,   KC_MS_BTN2,    KC_MS_BTN3,
 
-    KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_HOME,        KC_PGUP,        KC_PGDOWN,      KC_END,         KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_LEFT,        KC_UP,          KC_DOWN,        KC_RIGHT,       KC_TRANSPARENT,   
-    KC_TRANSPARENT, LCTL(KC_LEFT),  LCTL(KC_UP),    LCTL(KC_DOWN),  LCTL(KC_RIGHT),  KC_TRANSPARENT,              
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_L),  
-    KC_NO,
-    KC_TAB,         KC_ENTER,       KC_LSHIFT
+    _______,      KC_F6,         KC_F7,       KC_F8,         KC_F9,          KC_F10,     _______,
+    _______,      _______,       KC_HOME,     KC_PGUP,       KC_PGDOWN,      KC_END,     _______, 
+    _______,      _______,       KC_LEFT,     KC_UP,         KC_DOWN,        KC_RIGHT,   _______,   
+    _______,      LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_DOWN), LCTL(KC_RIGHT), _______,              
+    _______,      _______,       _______,     _______,       LGUI(KC_L),  
+    XXXXXXX,
+    KC_TAB,       KC_ENTER,      KC_LSHIFT
   ),
   [L_PROG] = LAYOUT_ML(
-    L_ESCAPE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, LALT(KC_F4),    CASH(KC_W),     CASH(KC_E),     LALT(KC_TAB),   CASH(KC_T),     KC_TRANSPARENT,
-    KC_TRANSPARENT, CASH(KC_A),     CASH(KC_S),     CASH(KC_D),     CASH(KC_F),     KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, CASH(KC_Z),     CASH(KC_X),     CASH(KC_C),     CASH(KC_V),     KC_TRANSPARENT,
-    KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,
-    KC_NO,        
-    KC_SPACE,       KC_BSPACE,      KC_DELETE,
+    L_ESCAPE,     _______,       _______,     _______,       _______,        _______,    _______,
+    _______,      LALT(KC_F4),   CASH(KC_W),  CASH(KC_E),    LALT(KC_TAB),   CASH(KC_T), _______,
+    _______,      CASH(KC_A),    CASH(KC_S),  CASH(KC_D),    CASH(KC_F),     _______,    _______,
+    _______,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     _______,
+    _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,
+    XXXXXXX,        
+    KC_SPACE,     KC_BSPACE,     KC_DELETE,
 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, TD(DANCE_3),    KC_AUDIO_MUTE,  KC_AUDIO_VOL_UP,CASH(KC_O),     KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_UP,KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_DOWN,        CASH(KC_M), KC_AUDIO_VOL_DOWN,  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_L),
-    KC_NO,
-    KC_TAB,         KC_ENTER,       KC_LSHIFT
+    _______,      _______,       _______,     _______,       _______,        _______,    _______, 
+    _______,    TD(D_QUEUE), KC_AUDIO_MUTE, KC_AUDIO_VOL_UP, CASH(KC_O),     _______,    _______, 
+    _______,  KC_UP,KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,_______, _______, 
+    KC_DOWN,      CASH(KC_M),    KC_AUDIO_VOL_DOWN,_______,  _______,        _______, 
+    _______,      _______,       _______,     _______,       LGUI(KC_L),
+    XXXXXXX,
+    KC_TAB,       KC_ENTER,      KC_LSHIFT
   ),
   [L_KEEB] = LAYOUT_ML(
-    L_ESCAPE,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, MOON_LED_LEVEL,
-    KC_TRANSPARENT, KC_TRANSPARENT, TOGGLE_LAYER_COLOR,KC_TRANSPARENT, RGB_SLD,     KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_LSWAP,       RGB_HUI,        RGB_SAI,        RGB_VAI,        RGB_TOG,        RGB_SPI,        KC_TRANSPARENT,
-    KC_TRANSPARENT, RGB_HUD,        RGB_SAD,        RGB_VAD,        KC_TRANSPARENT, RGB_SPD,
-    KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,       
-    KC_NO,
-    KC_SPACE,       KC_BSPACE,      KC_DELETE,
+    L_ESCAPE,     _______,       _______,     _______,       _______,        _______,    LED_LEVEL,
+    _______,      _______, TOGGLE_LAYER_COLOR,_______,       RGB_SLD,        _______,    _______,
+    KC_LSWAP,     RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_TOG,        RGB_SPI,    _______,
+    _______,      RGB_HUD,       RGB_SAD,     RGB_VAD,       _______,        RGB_SPD,
+    _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,       
+    XXXXXXX,
+    KC_SPACE,     KC_BSPACE,     KC_DELETE,
 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RESET,  
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, WEBUSB_PAIR,    KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, AU_TOG,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    MU_MOD,         MU_TOG,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_L),
-    KC_NO,
-    KC_TAB,         KC_ENTER,       KC_LSHIFT
+    _______,      _______,       _______,     _______,       _______,        _______,    RESET,  
+    _______,      _______,       _______,     _______,       _______,        _______,    _______, 
+    _______,      _______,       AU_TOG,      _______,       _______,        _______,    _______, 
+    MU_MOD,       MU_TOG,        _______,     _______,       _______,        _______,
+    _______,      _______,       _______,     _______,       LGUI(KC_L),
+    XXXXXXX,
+    KC_TAB,       KC_ENTER,      KC_LSHIFT
   ),
 };
 
@@ -253,8 +210,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_invert(L_RU);
     }
     break;  
-    case ST_MACRO_0:
+    case GONKI:
     if (record->event.pressed) {
+      //Delay is needed for page loading.
       SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)) SS_DELAY(1000) SS_LCTL(SS_TAP(X_ENTER)));
     }
     break;
@@ -302,11 +260,11 @@ uint8_t dance_step(qk_tap_dance_state_t *state) {
     return MORE_TAPS;
 }
 
-void on_dance_0(qk_tap_dance_state_t *state, void *user_data);
-void dance_0_finished(qk_tap_dance_state_t *state, void *user_data);
-void dance_0_reset(qk_tap_dance_state_t *state, void *user_data);
+void on_D_SNAP(qk_tap_dance_state_t *state, void *user_data);
+void D_SNAP_finished(qk_tap_dance_state_t *state, void *user_data);
+void D_SNAP_reset(qk_tap_dance_state_t *state, void *user_data);
 
-void on_dance_0(qk_tap_dance_state_t *state, void *user_data) {
+void on_D_SNAP(qk_tap_dance_state_t *state, void *user_data) {
     if(state->count == 3) {
         tap_code16(KC_PSCREEN);
         tap_code16(KC_PSCREEN);
@@ -317,7 +275,7 @@ void on_dance_0(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_0_finished(qk_tap_dance_state_t *state, void *user_data) {
+void D_SNAP_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[0].step = dance_step(state);
     switch (dance_state[0].step) {
         case SINGLE_TAP: register_code16(KC_PSCREEN); break;
@@ -327,7 +285,7 @@ void dance_0_finished(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_0_reset(qk_tap_dance_state_t *state, void *user_data) {
+void D_SNAP_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[0].step) {
         case SINGLE_TAP: unregister_code16(KC_PSCREEN); break;
@@ -337,11 +295,11 @@ void dance_0_reset(qk_tap_dance_state_t *state, void *user_data) {
     }
     dance_state[0].step = 0;
 }
-void on_dance_1(qk_tap_dance_state_t *state, void *user_data);
-void dance_1_finished(qk_tap_dance_state_t *state, void *user_data);
-void dance_1_reset(qk_tap_dance_state_t *state, void *user_data);
+void on_D_EYO(qk_tap_dance_state_t *state, void *user_data);
+void D_EYO_finished(qk_tap_dance_state_t *state, void *user_data);
+void D_EYO_reset(qk_tap_dance_state_t *state, void *user_data);
 
-void on_dance_1(qk_tap_dance_state_t *state, void *user_data) {
+void on_D_EYO(qk_tap_dance_state_t *state, void *user_data) {
     if(state->count == 3) {
         tap_code16(RU_IE);
         tap_code16(RU_IE);
@@ -352,7 +310,7 @@ void on_dance_1(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_1_finished(qk_tap_dance_state_t *state, void *user_data) {
+void D_EYO_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[1].step = dance_step(state);
     switch (dance_state[1].step) {
         case SINGLE_TAP: register_code16(RU_IE); break;
@@ -362,7 +320,7 @@ void dance_1_finished(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_1_reset(qk_tap_dance_state_t *state, void *user_data) {
+void D_EYO_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[1].step) {
         case SINGLE_TAP: unregister_code16(RU_IE); break;
@@ -372,11 +330,11 @@ void dance_1_reset(qk_tap_dance_state_t *state, void *user_data) {
     }
     dance_state[1].step = 0;
 }
-void on_DANCE_2(qk_tap_dance_state_t *state, void *user_data);
-void DANCE_2_finished(qk_tap_dance_state_t *state, void *user_data);
-void DANCE_2_reset(qk_tap_dance_state_t *state, void *user_data);
+void on_D_SIGNS(qk_tap_dance_state_t *state, void *user_data);
+void D_SIGNS_finished(qk_tap_dance_state_t *state, void *user_data);
+void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data);
 
-void on_DANCE_2(qk_tap_dance_state_t *state, void *user_data) {
+void on_D_SIGNS(qk_tap_dance_state_t *state, void *user_data) {
     if(state->count == 3) {
         tap_code16(RU_SOFT);
         tap_code16(RU_SOFT);
@@ -387,7 +345,7 @@ void on_DANCE_2(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void DANCE_2_finished(qk_tap_dance_state_t *state, void *user_data) {
+void D_SIGNS_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[3].step = dance_step(state);
     switch (dance_state[3].step) {
         case SINGLE_TAP: register_code16(RU_SOFT); break;
@@ -397,7 +355,7 @@ void DANCE_2_finished(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void DANCE_2_reset(qk_tap_dance_state_t *state, void *user_data) {
+void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[3].step) {
         case SINGLE_TAP: unregister_code16(RU_SOFT); break;
@@ -408,11 +366,11 @@ void DANCE_2_reset(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[3].step = 0;
 }
 
-void on_DANCE_3(qk_tap_dance_state_t *state, void *user_data);
-void DANCE_3_finished(qk_tap_dance_state_t *state, void *user_data);
-void DANCE_3_reset(qk_tap_dance_state_t *state, void *user_data);
+void on_D_QUEUE(qk_tap_dance_state_t *state, void *user_data);
+void D_QUEUE_finished(qk_tap_dance_state_t *state, void *user_data);
+void D_QUEUE_reset(qk_tap_dance_state_t *state, void *user_data);
 
-void on_DANCE_3(qk_tap_dance_state_t *state, void *user_data) {
+void on_D_QUEUE(qk_tap_dance_state_t *state, void *user_data) {
     if(state->count == 3) {
         tap_code16(LCTL(KC_D));
         tap_code16(LCTL(KC_D));
@@ -423,7 +381,7 @@ void on_DANCE_3(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void DANCE_3_finished(qk_tap_dance_state_t *state, void *user_data) {
+void D_QUEUE_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[6].step = dance_step(state);
     switch (dance_state[6].step) {
         case SINGLE_TAP: register_code16(LCTL(KC_D)); break;
@@ -433,7 +391,7 @@ void DANCE_3_finished(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void DANCE_3_reset(qk_tap_dance_state_t *state, void *user_data) {
+void D_QUEUE_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[6].step) {
         case SINGLE_TAP: unregister_code16(LCTL(KC_D)); break;
@@ -445,8 +403,8 @@ void DANCE_3_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-        [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
-        [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
-        [DANCE_2] = ACTION_TAP_DANCE_FN_ADVANCED(on_DANCE_2, DANCE_2_finished, DANCE_2_reset),
-        [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(on_DANCE_3, DANCE_3_finished, DANCE_3_reset),
+        [D_SNAP] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_SNAP, D_SNAP_finished, D_SNAP_reset),
+        [D_EYO] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_EYO, D_EYO_finished, D_EYO_reset),
+        [D_SIGNS] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_SIGNS, D_SIGNS_finished, D_SIGNS_reset),
+        [D_QUEUE] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_QUEUE, D_QUEUE_finished, D_QUEUE_reset),
 };
