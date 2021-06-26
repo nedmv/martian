@@ -44,6 +44,8 @@
 #define BP_NDSH_MAC ALGR(KC_8)
 #define MOON_LED_LEVEL LED_LEVEL
 
+#define KC_LSWAP KC_CAPSLOCK
+
 #define LAYOUT_ML( \
     k00, k01, k02, k03, k04, k05, k06, \
     k10, k11, k12, k13, k14, k15, k16, \
@@ -74,6 +76,11 @@ LAYOUT_moonlander( \
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   ST_MACRO_0, // Start next game on klavogonki.ru
+  LSWAP_0, // Change language and TO layer 0.
+  LSWAP_1, // Change language and TO layer 1. 
+  L_ESCAPE, // TO layer 1, if it's active. Else TO layer 0.
+  CLSWAP_0, // If layer 1 is active, change language. Then TO layer 0.
+  CLSWAP_1, // If layer 1 is inactive, change language. Then TO layer 1.
 };
 
 
@@ -91,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TG(1),       KC_A,         KC_S,       KC_D,     KC_F,      KC_G,  KC_RBRACKET,
     KC_CAPSLOCK, KC_Z,         KC_X,       KC_C,     KC_V,      KC_B,
     KC_GRAVE,    TD(DANCE_0),  KC_LGUI,    KC_LALT,  KC_LCTRL,
-    KC_TRANSPARENT,
+    KC_NO,
     KC_SPACE,    KC_BSPACE,    KC_DELETE,
     
     KC_TRANSPARENT, KC_6,      KC_7,       KC_8,      KC_9,     KC_0,      KC_MINUS,
@@ -99,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_COMMA,       KC_H,      KC_J,       KC_K,      KC_L,     KC_SCOLON, KC_QUOTE,
     KC_N,           KC_M,      KC_COMMA,   KC_DOT,    KC_SLASH, ST_MACRO_0,
     TT(2),          TT(3),     TT(4),      KC_BSLASH, LGUI(KC_L),
-    TO(1),
+    LSWAP_1,
     KC_TAB,         KC_ENTER,       KC_LSHIFT
   ),
   [1] = LAYOUT_ML(
@@ -108,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, RU_EF,          RU_YERU,        RU_VE,          RU_A,           RU_PE,          KC_RBRACKET,
     KC_CAPSLOCK,    RU_YA,          RU_CHE,         RU_ES,          RU_EM,          RU_I,
     KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,       
-    TO(0),                                                                                                              
+    LSWAP_0,                                                                                                              
     KC_SPACE,       KC_BSPACE,      KC_DELETE,
     
     KC_TRANSPARENT, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           RU_MINS,
@@ -116,16 +123,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LSFT(RU_DOT),   RU_ER,          RU_O,           RU_EL,          RU_DE,          RU_ZHE,         RU_E,                
     RU_TE,          TD(DANCE_2),    RU_BE,          RU_YU,          RU_DOT,         ST_MACRO_0,
     TT(2),          TT(3),          TT(4),          KC_BSLASH,      LGUI(KC_L),
-    KC_TRANSPARENT,
+    KC_NO,
     KC_TAB,         KC_ENTER,       KC_LSHIFT
   ),
   [2] = LAYOUT_ML(
-    KC_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,
+    L_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_MS_LEFT,     KC_MS_UP,       KC_MS_DOWN,     KC_MS_RIGHT,    KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,
-    TO(0),
+    CLSWAP_0,
     KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_BTN3,
 
     KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_TRANSPARENT,
@@ -133,16 +140,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_LEFT,        KC_UP,          KC_DOWN,        KC_RIGHT,       KC_TRANSPARENT,   
     KC_TRANSPARENT, LCTL(KC_LEFT),  LCTL(KC_UP),    LCTL(KC_DOWN),  LCTL(KC_RIGHT),  KC_TRANSPARENT,              
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_L),  
-    TO(1),
+    CLSWAP_1,
     KC_TAB,         KC_ENTER,       KC_LSHIFT
   ),
   [3] = LAYOUT_ML(
-    KC_ESCAPE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    L_ESCAPE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, LALT(KC_F4),    MEH_T(KC_W),     MEH_T(KC_E),     LALT(KC_TAB),   MEH_T(KC_T),     KC_TRANSPARENT,
     KC_TRANSPARENT, MEH_T(KC_A),     MEH_T(KC_S),     MEH_T(KC_D),     MEH_T(KC_F),     KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, MEH_T(KC_Z),     MEH_T(KC_X),     MEH_T(KC_C),     MEH_T(KC_V),     KC_TRANSPARENT,
     KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,
-    TO(0),        
+    CLSWAP_0,        
     KC_SPACE,       KC_BSPACE,      KC_DELETE,
 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -150,16 +157,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_UP,KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_DOWN,        MEH_T(KC_M), KC_AUDIO_VOL_DOWN,  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_L),
-    TO(1),
+    CLSWAP_1,
     KC_TAB,         KC_ENTER,       KC_LSHIFT
   ),
   [4] = LAYOUT_ML(
-    KC_ESCAPE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, MOON_LED_LEVEL,
+    L_ESCAPE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, MOON_LED_LEVEL,
     KC_TRANSPARENT, KC_TRANSPARENT, TOGGLE_LAYER_COLOR,KC_TRANSPARENT, RGB_SLD,     KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, RGB_HUI,        RGB_SAI,        RGB_VAI,        RGB_TOG,        RGB_SPI,        KC_TRANSPARENT,
     KC_TRANSPARENT, RGB_HUD,        RGB_SAD,        RGB_VAD,        KC_TRANSPARENT, RGB_SPD,
     KC_TRANSPARENT, TD(DANCE_0),    KC_LGUI,        KC_LALT,        KC_LCTRL,       
-    TO(0),
+    CLSWAP_0,
     KC_SPACE,       KC_BSPACE,      KC_DELETE,
 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RESET,  
@@ -167,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, AU_TOG,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     MU_MOD,         MU_TOG,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_L),
-    TO(1),
+    CLSWAP_1,
     KC_TAB,         KC_ENTER,       KC_LSHIFT
   ),
 };
@@ -234,7 +241,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)) SS_DELAY(1000) SS_LCTL(SS_TAP(X_ENTER)));
-
+    }
+    break;
+    case LSWAP_0:
+    if (record->event.pressed) {
+      tap_code(KC_LSWAP);
+      layer_move(0);
+    }
+    break;
+    case LSWAP_1:
+    if (record->event.pressed) {
+      tap_code(KC_LSWAP);
+      layer_move(1);
+    }
+    break;
+    case L_ESCAPE:
+    if (record->event.pressed) {
+      if (IS_LAYER_ON(1)) {
+        layer_move(1);
+      } else {
+        layer_move(0);
+      }
+    }
+    break;
+    case CLSWAP_0:
+    if (record->event.pressed) {
+      if (IS_LAYER_ON(1)) {
+        tap_code(KC_LSWAP);
+      }
+      layer_move(0);
+    }
+    break;
+    case CLSWAP_1:
+    if (record->event.pressed) {
+      if (!IS_LAYER_ON(1)) {
+        tap_code(KC_LSWAP);
+      }
+      layer_move(1);
     }
     break;
     case RGB_SLD:
