@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO_RU,       KC_A,           KC_S,        KC_D,          KC_F,           KC_G,      KC_RBRACKET,
     XXXXXXX,     KC_Z,           KC_X,        KC_C,          KC_V,           KC_B,
     KC_GRAVE,    TD(D_SNAP),     KC_LGUI,     KC_LALT,       KC_LCTRL,
-    XXXXXXX,
+    TO_RU,
     KC_SPACE,    KC_BSPACE,      KC_DELETE,
     
     XXXXXXX,     KC_6,           KC_7,        KC_8,          KC_9,           KC_0,      KC_MINUS,
@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      KC_MS_LEFT,    KC_MS_UP,    KC_MS_DOWN,    KC_MS_RIGHT,    _______,    _______,
     _______,      _______,       _______,     _______,       _______,        _______,
     _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,
-    XXXXXXX,
+    _______,
     KC_MS_BTN1,   KC_MS_BTN2,    KC_MS_BTN3,
 
     KC_F11,       KC_F6,         KC_F7,       KC_F8,         KC_F9,          KC_F10,     KC_F12,
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      _______,       KC_LEFT,     KC_UP,         KC_DOWN,        KC_RIGHT,   _______,   
     _______,      LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_DOWN), LCTL(KC_RIGHT), _______,              
     _______,      _______,       _______,     _______,       LGUI(KC_L),  
-    XXXXXXX,
+    _______,
     KC_TAB,       KC_ENTER,      KC_LSHIFT
   ),
   [L_PROG] = LAYOUT_ML(
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      CASH(KC_A),    CASH(KC_S),  CASH(KC_D),    CASH(KC_F),     _______,    _______,
     _______,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     _______,
     _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,
-    XXXXXXX,        
+    _______,        
     KC_SPACE,     KC_BSPACE,     KC_DELETE,
 
     _______,      _______,       _______,     _______,       _______,        _______,    _______, 
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  KC_UP,KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,_______, _______, 
     KC_DOWN,      CASH(KC_M),    KC_AUDIO_VOL_DOWN,_______,  _______,        _______, 
     _______,      _______,       _______,     _______,       LGUI(KC_L),
-    XXXXXXX,
+    _______,
     KC_TAB,       KC_ENTER,      KC_LSHIFT
   ),
   [L_KEEB] = LAYOUT_ML(
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSWAP,     RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_TOG,        RGB_SPI,    _______,
     _______,      RGB_HUD,       RGB_SAD,     RGB_VAD,       _______,        RGB_SPD,
     _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,       
-    XXXXXXX,
+    _______,
     KC_SPACE,     KC_BSPACE,     KC_DELETE,
 
     _______,      _______,       _______,     _______,       _______,        _______,    RESET,  
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      _______,       AU_TOG,      _______,       _______,        _______,    _______, 
     MU_MOD,       MU_TOG,        _______,     _______,       _______,        _______,
     _______,      _______,       _______,     _______,       LGUI(KC_L),
-    XXXXXXX,
+    _______,
     KC_TAB,       KC_ENTER,      KC_LSHIFT
   ),
 };
