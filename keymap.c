@@ -47,6 +47,9 @@ enum custom_keycodes {
   GONKI, // Start next race on klavogonki.ru
   TO_RU, //Invert state of russian layer and toggle layout.
   L_ESCAPE, // TO layer 1, if it's active. Else TO layer 0.
+  RU_LBRACKET, // LBRACKET for Russian layer.
+  RU_RBRACKET, // RBRACKET for Russian layer.
+  RU_GRAVE, // GRAVE for Russian layer.
 };
 
 enum tap_dance_codes {
@@ -76,10 +79,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_RU] = LAYOUT_ML(
     _______,      _______,       _______,     _______,       _______,        _______,    _______,
-    _______,      RU_SHTI,       RU_TSE,      RU_U,          RU_KA,          TD(D_EYO),  _______,
-    _______,      RU_EF,         RU_YERU,     RU_VE,         RU_A,           RU_PE,      _______,
+    _______,      RU_SHTI,       RU_TSE,      RU_U,          RU_KA,          TD(D_EYO),  RU_LBRACKET,
+    _______,      RU_EF,         RU_YERU,     RU_VE,         RU_A,           RU_PE,      RU_RBRACKET,
     _______,      RU_YA,         RU_CHE,      RU_ES,         RU_EM,          RU_I,
-    _______,      _______,       _______,     _______,       _______,       
+    RU_GRAVE,      _______,       _______,     _______,       _______,       
     _______,                                                                                                               
     _______,      _______,       _______,
     
@@ -201,6 +204,14 @@ void rgb_matrix_indicators_user(void) {
   }
 }
 
+void press_inverted(uint16_t keycode, keyrecord_t *record) {
+  if (record->event.pressed) {
+    layer_invert(L_RU);
+    tap_code(keycode);
+    layer_invert(L_RU);
+  }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case TO_RU:
@@ -220,6 +231,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       layer_move(IS_LAYER_ON(L_RU)?L_RU:L_EN);
     }
+    break;
+    case RU_LBRACKET:
+    press_inverted(KC_LBRACKET, record);
+    break;
+    case RU_RBRACKET:
+    press_inverted(KC_RBRACKET, record);
+    break;
+    case RU_GRAVE:
+    press_inverted(KC_GRAVE, record);
     break;
     case RGB_SLD:
       if (record->event.pressed) {
