@@ -114,8 +114,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_PROG] = LAYOUT_ML(
     L_ESCAPE,     _______,       _______,     _______,       _______,        _______,    _______,
     _______,      LALT(KC_F4),   CASH(KC_W),  CASH(KC_E),    LALT(KC_TAB),   CASH(KC_T), _______,
-    _______,      CASH(KC_A),    CASH(KC_S),  CASH(KC_D),    CASH(KC_F),     _______,    _______,
-    _______,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     _______,
+    _______,      CASH(KC_A),    CASH(KC_S),  CASH(KC_D),    CASH(KC_F),     CASH(KC_G), _______,
+    _______,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     CASH(KC_B),
     _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,
     _______,        
     KC_SPACE,     KC_BSPACE,     KC_DELETE,
