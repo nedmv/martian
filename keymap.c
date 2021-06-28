@@ -51,6 +51,7 @@ enum custom_keycodes {
   RU_RBRACKET, // RBRACKET for Russian layer.
   RU_GRAVE, // GRAVE for Russian layer.
   RU_HASH, // # for Russian layer.
+  LOCK, // Lock screen and move to layer 0.
 };
 
 enum tap_dance_codes {
@@ -74,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_DOT,      KC_Y,           KC_U,        KC_I,          KC_O,           KC_P,      XXXXXXX,
     KC_COMMA,    KC_H,           KC_J,        KC_K,          KC_L,           KC_SCOLON, KC_QUOTE,
     KC_N,        KC_M,           KC_COMMA,    KC_DOT,        KC_SLASH,       GONKI,
-    TT(L_MOVE),  TT(L_PROG),     TT(L_KEEB),  KC_BSLASH,     LGUI(KC_L),
+    TT(L_MOVE),  TT(L_PROG),     TT(L_KEEB),  KC_BSLASH,     XXXXXXX,
     XXXXXXX,
     KC_TAB,      KC_ENTER,       KC_LSHIFT
   ),
@@ -108,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      _______,       KC_HOME,     KC_PGUP,       KC_PGDOWN,      KC_END,     _______, 
     _______,      _______,       KC_LEFT,     KC_UP,         KC_DOWN,        KC_RIGHT,   _______,   
     _______,      LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_DOWN), LCTL(KC_RIGHT), _______,              
-    _______,      _______,       _______,     _______,       LGUI(KC_L),  
+    _______,      _______,       _______,     _______,       LOCK,  
     _______,
     KC_TAB,       KC_ENTER,      KC_LSHIFT
   ),
@@ -125,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,    TD(D_QUEUE), KC_AUDIO_MUTE, KC_AUDIO_VOL_UP, CASH(KC_O),     _______,    _______, 
     _______,  KC_UP,KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,_______, _______, 
     KC_DOWN,      CASH(KC_M),    KC_AUDIO_VOL_DOWN,_______,  _______,        _______, 
-    _______,      _______,       _______,     _______,       LGUI(KC_L),
+    _______,      _______,       _______,     _______,       LOCK,
     _______,
     KC_TAB,       KC_ENTER,      KC_LSHIFT
   ),
@@ -142,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      _______,       _______,     _______,       _______,        _______,    _______, 
     _______,      _______,       AU_TOG,      _______,       _______,        _______,    _______, 
     MU_MOD,       MU_TOG,        _______,     _______,       _______,        _______,
-    _______,      _______,       _______,     _______,       LGUI(KC_L),
+    _______,      _______,       _______,     _______,       LOCK,
     _______,
     KC_TAB,       KC_ENTER,      KC_LSHIFT
   ),
@@ -253,7 +254,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (get_mods() | MOD_MASK_SHIFT) {
       press_inverted(KC_3, record);
     } else {
-      tap_code(KC_3);
+      if (record->event.pressed) {
+        tap_code(KC_3);
+      }
+    }
+    break;
+    case LOCK:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LGUI(SS_TAP(X_L)));
+      if(IS_LAYER_ON(L_RU)) {
+        tap_code(KC_LSWAP);
+      }
+      layer_move(L_EN);
     }
     break;
     case RGB_SLD:
