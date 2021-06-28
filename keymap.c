@@ -50,6 +50,7 @@ enum custom_keycodes {
   RU_LBRACKET, // LBRACKET for Russian layer.
   RU_RBRACKET, // RBRACKET for Russian layer.
   RU_GRAVE, // GRAVE for Russian layer.
+  RU_HASH, // # for Russian layer.
 };
 
 enum tap_dance_codes {
@@ -78,11 +79,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,      KC_ENTER,       KC_LSHIFT
   ),
   [L_RU] = LAYOUT_ML(
-    _______,      _______,       _______,     _______,       _______,        _______,    _______,
+    _______,      _______,       _______,     RU_HASH,          _______,        _______,    _______,
     _______,      RU_SHTI,       RU_TSE,      RU_U,          RU_KA,          TD(D_EYO),  RU_LBRACKET,
     _______,      RU_EF,         RU_YERU,     RU_VE,         RU_A,           RU_PE,      RU_RBRACKET,
     _______,      RU_YA,         RU_CHE,      RU_ES,         RU_EM,          RU_I,
-    RU_GRAVE,      _______,       _______,     _______,       _______,       
+    RU_GRAVE,     _______,       _______,     _______,       _______,       
     _______,                                                                                                               
     _______,      _______,       _______,
     
@@ -247,6 +248,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case RU_GRAVE:
     press_inverted(KC_GRAVE, record);
+    break;
+    case RU_HASH:
+    if (get_mods() | MOD_MASK_SHIFT) {
+      press_inverted(KC_3, record);
+    } else {
+      tap_code(KC_3);
+    }
     break;
     case RGB_SLD:
       if (record->event.pressed) {
