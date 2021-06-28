@@ -206,9 +206,16 @@ void rgb_matrix_indicators_user(void) {
 
 void press_inverted(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
-    layer_invert(L_RU);
+    //TODO: how to process oneshot mods?
+    uint8_t mods = get_mods();
+    clear_mods();
+    tap_code(KC_LSWAP);
+    set_mods(mods);
     tap_code(keycode);
-    layer_invert(L_RU);
+    mods = get_mods();
+    clear_mods();
+    tap_code(KC_LSWAP);
+    set_mods(mods);
   }
 }
 
