@@ -1,9 +1,11 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "keymap_russian.h"
+//#include "keymap_russian.h"
 
-#define CASH(KC)  LALT(LCTL(LSFT(KC))) // CASH does not work as expected
-#define KC_LSWAP KC_CAPSLOCK //TODO: add ability to change hotkey
+#define CUSTOM_SAFE_RANGE ML_SAFE_RANGE
+#include "lang_shift/include.h"
+
+#define CASH(KC)  LALT(LCTL(LSFT(KC))) // MEH does not work as expected
 
 #define LAYOUT_ML( \
     k00, k01, k02, k03, k04, k05, k06, \
@@ -45,15 +47,14 @@ enum layers {
 };
 
 enum custom_keycodes {
-  RGB_SLD = ML_SAFE_RANGE,
+  RGB_SLD = CUSTOM_SAFE_RANGE,
   GONKI, // Start next race on klavogonki.ru
   TO_RU, //Invert state of russian layer and toggle layout.
-  L_ESCAPE, // TO layer 1, if it's active. Else TO layer 0.
-  RU_LBRACKET, // LBRACKET for Russian layer.
-  RU_RBRACKET, // RBRACKET for Russian layer.
-  RU_GRAVE, // GRAVE for Russian layer.
-  RU_HASH, // # for Russian layer.
+  L_ESCAPE, // TO L_RU, if it's active. Else TO L_EN.
   LOCK, // Lock screen and move to layer 0.
+  CUSTOM_KEYCODES_SAFE_RANGE,
+  #undef CUSTOM_SAFE_RANGE
+  #define CUSTOM_SAFE_RANGE CUSTOM_KEYCODES_SAFE_RANGE
 };
 
 enum tap_dance_codes {
@@ -100,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
     [L_RU] = LAYOUT_ML(
     _______,     AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
-    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           TD_EYO,    EN_LBRC,
+    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           D_EYO,    EN_LBRC,
     AG_COMM,     RU_F,           RU_Y,        RU_V,          RU_A,           RU_P,      EN_RBRC,
     _______,     RU_JA,          RU_CH,       RU_S,          RU_M,           RU_I,
     _______,     _______,        _______,     _______,       _______,
@@ -117,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_RU_S] = LAYOUT_ML(
     _______,     AG_EXCL,        AG_DQUO,     EN_HASH,       EN_DLR,         AG_PERC,   AG_PLUS,
-    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         LSFT(TD_EYO),EN_LCBR,
+    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         LSFT(D_EYO),EN_LCBR,
     AG_SCLN,     RU_S_F,         RU_S_Y,      RU_S_V,        RU_S_A,         RU_S_P,    EN_RCBR,
     _______,     RU_S_JA,        RU_S_CH,     RU_S_S,        RU_S_M,         RU_S_I,
     _______,     _______,        _______,     _______,       _______,
@@ -169,8 +170,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_KEEB] = LAYOUT_ML(
     L_ESCAPE,     _______,       _______,     _______,       _______,        _______,    LED_LEVEL,
     _______,      _______, TOGGLE_LAYER_COLOR,_______,       RGB_SLD,        _______,    _______,
-    KC_LSWAP,     RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_TOG,        RGB_SPI,    _______,
-    _______,      RGB_HUD,       RGB_SAD,     RGB_VAD,       _______,        RGB_SPD,
+    _______,      RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_TOG,        RGB_SPI,    _______,
+    LA_SYNC,      RGB_HUD,       RGB_SAD,     RGB_VAD,       _______,        RGB_SPD,
     _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,       
     _______,
     KC_SPACE,     KC_BSPACE,     KC_DELETE,
@@ -242,30 +243,10 @@ void rgb_matrix_indicators_user(void) {
   }
 }
 
-void press_inverted(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed) {
-    //TODO: how to process oneshot mods?
-    uint8_t mods = get_mods();
-    clear_mods();
-    tap_code(KC_LSWAP);
-    set_mods(mods);
-    tap_code(keycode);
-    mods = get_mods();
-    clear_mods();
-    tap_code(KC_LSWAP);
-    set_mods(mods);
-  }
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!lang_shift_process_record(keycode, record)) return false;
+
   switch (keycode) {
-    case TO_RU:
-    if (record->event.pressed) {
-        clear_keyboard();
-        tap_code(KC_LSWAP);
-        layer_invert(L_RU);
-    }
-    break;  
     case GONKI:
     if (record->event.pressed) {
       //Delay is needed for page loading.
@@ -277,29 +258,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       layer_move(IS_LAYER_ON(L_RU)?L_RU:L_EN);
     }
     break;
-    case RU_LBRACKET:
-    press_inverted(KC_LBRACKET, record);
-    break;
-    case RU_RBRACKET:
-    press_inverted(KC_RBRACKET, record);
-    break;
-    case RU_GRAVE:
-    press_inverted(KC_GRAVE, record);
-    break;
-    case RU_HASH:
-    if (get_mods() | MOD_MASK_SHIFT) {
-      press_inverted(KC_3, record);
-    } else {
-      if (record->event.pressed) {
-        tap_code(KC_3);
-      }
-    }
-    break;
     case LOCK:
     if (record->event.pressed) {
       SEND_STRING(SS_LGUI(SS_TAP(X_L)));
       if(IS_LAYER_ON(L_RU)) {
-        tap_code(KC_LSWAP);
+        tap_code16(LA_CHNG);
       }
       layer_move(L_EN);
     }
@@ -384,32 +347,32 @@ void D_EYO_reset(qk_tap_dance_state_t *state, void *user_data);
 
 void on_D_EYO(qk_tap_dance_state_t *state, void *user_data) {
     if(state->count == 3) {
-        tap_code16(RU_IE);
-        tap_code16(RU_IE);
-        tap_code16(RU_IE);
+        tap_code16(RU_JE);
+        tap_code16(RU_JE);
+        tap_code16(RU_JE);
     }
     if(state->count > 3) {
-        tap_code16(RU_IE);
+        tap_code16(RU_JE);
     }
 }
 
 void D_EYO_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[1].step = dance_step(state);
     switch (dance_state[1].step) {
-        case SINGLE_TAP: register_code16(RU_IE); break;
-        case SINGLE_HOLD: register_code16(RU_YO); break;
-        case DOUBLE_TAP: register_code16(RU_IE); register_code16(RU_IE); break;
-        case DOUBLE_SINGLE_TAP: tap_code16(RU_IE); register_code16(RU_IE);
+        case SINGLE_TAP: register_code16(RU_JE); break;
+        case SINGLE_HOLD: register_code16(RU_JO); break;
+        case DOUBLE_TAP: tap_code16(RU_JE); register_code16(RU_JE); break;
+        case DOUBLE_SINGLE_TAP: tap_code16(RU_JE); register_code16(RU_JO);
     }
 }
 
 void D_EYO_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[1].step) {
-        case SINGLE_TAP: unregister_code16(RU_IE); break;
-        case SINGLE_HOLD: unregister_code16(RU_YO); break;
-        case DOUBLE_TAP: unregister_code16(RU_IE); break;
-        case DOUBLE_SINGLE_TAP: unregister_code16(RU_IE); break;
+        case SINGLE_TAP: unregister_code16(RU_JE); break;
+        case SINGLE_HOLD: unregister_code16(RU_JO); break;
+        case DOUBLE_TAP: unregister_code16(RU_JE); break;
+        case DOUBLE_SINGLE_TAP: unregister_code16(RU_JO); break;
     }
     dance_state[1].step = 0;
 }
@@ -419,32 +382,32 @@ void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data);
 
 void on_D_SIGNS(qk_tap_dance_state_t *state, void *user_data) {
     if(state->count == 3) {
-        tap_code16(RU_SOFT);
-        tap_code16(RU_SOFT);
-        tap_code16(RU_SOFT);
+        tap_code16(RU_SF);
+        tap_code16(RU_SF);
+        tap_code16(RU_SF);
     }
     if(state->count > 3) {
-        tap_code16(RU_SOFT);
+        tap_code16(RU_SF);
     }
 }
 
 void D_SIGNS_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[3].step = dance_step(state);
     switch (dance_state[3].step) {
-        case SINGLE_TAP: register_code16(RU_SOFT); break;
-        case SINGLE_HOLD: register_code16(RU_HARD); break;
-        case DOUBLE_TAP: register_code16(RU_SOFT); register_code16(RU_SOFT); break;
-        case DOUBLE_SINGLE_TAP: tap_code16(RU_SOFT); register_code16(RU_SOFT);
+        case SINGLE_TAP: register_code16(RU_SF); break;
+        case SINGLE_HOLD: register_code16(RU_HD); break;
+        case DOUBLE_TAP: tap_code16(RU_SF); register_code16(RU_SF); break;
+        case DOUBLE_SINGLE_TAP: tap_code16(RU_SF); register_code16(RU_HD);
     }
 }
 
 void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[3].step) {
-        case SINGLE_TAP: unregister_code16(RU_SOFT); break;
-        case SINGLE_HOLD: unregister_code16(RU_HARD); break;
-        case DOUBLE_TAP: unregister_code16(RU_SOFT); break;
-        case DOUBLE_SINGLE_TAP: unregister_code16(RU_SOFT); break;
+        case SINGLE_TAP: unregister_code16(RU_SF); break;
+        case SINGLE_HOLD: unregister_code16(RU_HD); break;
+        case DOUBLE_TAP: unregister_code16(RU_SF); break;
+        case DOUBLE_SINGLE_TAP: unregister_code16(RU_HD); break;
     }
     dance_state[3].step = 0;
 }
@@ -491,3 +454,11 @@ qk_tap_dance_action_t tap_dance_actions[] = {
         [D_SIGNS] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_SIGNS, D_SIGNS_finished, D_SIGNS_reset),
         [D_QUEUE] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_QUEUE, D_QUEUE_finished, D_QUEUE_reset),
 };
+
+void user_timer(void) {
+  lang_shift_user_timer();
+}
+
+void matrix_scan_user(void) {
+  user_timer();
+}
