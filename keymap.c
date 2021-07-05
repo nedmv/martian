@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  EN_N,           EN_M,        KC_COMMA,      KC_DOT,         AG_DOT,    GONKI,
                                  TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     KC_BSLASH, XXXXXXX,
     XXXXXXX,
-    KC_TAB,      KC_ENTER,       KC_LSHIFT
+    KC_TAB,      KC_ENTER,       SFT_N
   ),
   [L_EN_S] = LAYOUT_ML(
     _______,     AG_EXCL,        AG_DQUO,     EN_HASH,       EN_DLR,         AG_PERC,   AG_PLUS,
@@ -148,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_DOWN), LCTL(KC_RIGHT), _______,              
     _______,      _______,       _______,     _______,       LOCK,  
     _______,
-    KC_TAB,       KC_ENTER,      KC_LSHIFT
+    KC_TAB,       KC_ENTER,      SFT_N
   ),
   [L_PROG] = LAYOUT_ML(
     L_ESCAPE,     _______,       _______,     _______,       _______,        _______,    _______,
@@ -165,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_DOWN,      CASH(KC_M),    KC_AUDIO_VOL_DOWN,_______,  _______,        _______, 
     _______,      _______,       _______,     _______,       LOCK,
     _______,
-    KC_TAB,       KC_ENTER,      KC_LSHIFT
+    KC_TAB,       KC_ENTER,      SFT_N
   ),
   [L_KEEB] = LAYOUT_ML(
     L_ESCAPE,     _______,       _______,     _______,       _______,        _______,    LED_LEVEL,
@@ -182,7 +182,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MU_MOD,       MU_TOG,        _______,     _______,       _______,        _______,
     _______,      _______,       _______,     _______,       LOCK,
     _______,
-    KC_TAB,       KC_ENTER,      KC_LSHIFT
+    KC_TAB,       KC_ENTER,      SFT_N
   ),
 };
 
@@ -244,7 +244,9 @@ void rgb_matrix_indicators_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!lang_shift_process_record(keycode, record)) return false;
+  if (!lang_shift_process_record(keycode, record)) {
+    return false;
+  } 
 
   switch (keycode) {
     case GONKI:
