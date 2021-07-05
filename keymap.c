@@ -33,13 +33,15 @@ LAYOUT_moonlander( \
 
 
 enum layers {
-  // Language layers MUST be 0 and 1
+  // Language layers for lang-shift must be in that order.
   L_EN = 0, // Base English layer, based on QWERTY
-  L_RU = 1, // Base Russian layer, based on ЙЦУКЕН
+  L_EN_S, // Shifted English layer
+  L_RU, // Base Russian layer, based on ЙЦУКЕН
+  L_RU_S, // Shifted Russian layer.
 
-  L_MOVE = 2, // Movement layer (arrows, mouse, F1-F12)
-  L_PROG = 3, // Program layer (Meh hotkeys, media)
-  L_KEEB = 4, // Keyboard layer (lighting, sound, reset)
+  L_MOVE, // Movement layer (arrows, mouse, F1-F12)
+  L_PROG, // Program layer (Meh hotkeys, media)
+  L_KEEB, // Keyboard layer (lighting, sound, reset)
 };
 
 enum custom_keycodes {
@@ -63,38 +65,72 @@ enum tap_dance_codes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_EN] = LAYOUT_ML(
-    KC_ESCAPE,   KC_1,           KC_2,        KC_3,          KC_4,           KC_5,      KC_EQUAL,
-    OSL(L_PROG), KC_Q,           KC_W,        KC_E,          KC_R,           KC_T,      KC_LBRACKET,
-    TO_RU,       KC_A,           KC_S,        KC_D,          KC_F,           KC_G,      KC_RBRACKET,
-    XXXXXXX,     KC_Z,           KC_X,        KC_C,          KC_V,           KC_B,
-    KC_GRAVE,    TD(D_SNAP),     KC_LGUI,     KC_LALT,       KC_LCTRL,
-    TO_RU,
+    KC_ESCAPE,   AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
+    OSL(L_PROG), EN_Q,           EN_W,        EN_E,          EN_R,           EN_T,      EN_LBRC,
+    AG_COMM,     EN_A,           EN_S,        EN_D,          EN_F,           EN_G,      EN_RBRC,
+    LA_CHNG,     EN_Z,           EN_X,        EN_C,          EN_V,           EN_B,
+    XXXXXXX,     TD(D_SNAP),     KC_LGUI,     KC_LALT,       KC_LCTRL,
+    XXXXXXX,
     KC_SPACE,    KC_BSPACE,      KC_DELETE,
     
-    XXXXXXX,     KC_6,           KC_7,        KC_8,          KC_9,           KC_0,      KC_MINUS,
-    KC_DOT,      KC_Y,           KC_U,        KC_I,          KC_O,           KC_P,      XXXXXXX,
-    KC_COMMA,    KC_H,           KC_J,        KC_K,          KC_L,           KC_SCOLON, KC_QUOTE,
-    KC_N,        KC_M,           KC_COMMA,    KC_DOT,        KC_SLASH,       GONKI,
-    TT(L_MOVE),  TT(L_PROG),     TT(L_KEEB),  KC_BSLASH,     XXXXXXX,
+    EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
+    EN_LPRN,     EN_Y,           EN_U,        EN_I,          EN_O,           EN_P,      XXXXXXX,
+    EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           KC_SCOLON, KC_QUOTE,
+                 EN_N,           EN_M,        KC_COMMA,      KC_DOT,         AG_DOT,    GONKI,
+                                 TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     KC_BSLASH, XXXXXXX,
     XXXXXXX,
     KC_TAB,      KC_ENTER,       KC_LSHIFT
   ),
-  [L_RU] = LAYOUT_ML(
-    _______,      _______,       _______,     RU_HASH,          _______,        _______,    _______,
-    _______,      RU_SHTI,       RU_TSE,      RU_U,          RU_KA,          TD(D_EYO),  RU_LBRACKET,
-    _______,      RU_EF,         RU_YERU,     RU_VE,         RU_A,           RU_PE,      RU_RBRACKET,
-    _______,      RU_YA,         RU_CHE,      RU_ES,         RU_EM,          RU_I,
-    RU_GRAVE,     _______,       _______,     _______,       _______,       
-    _______,                                                                                                               
-    _______,      _______,       _______,
-    
-    _______,      _______,       _______,     _______,       _______,        _______,    RU_MINS,
-    RU_DOT,       RU_EN,         RU_GHE,      RU_SHA,        RU_SHCH,        RU_ZE,      RU_HA,
-    LSFT(RU_DOT), RU_ER,         RU_O,        RU_EL,         RU_DE,          RU_ZHE,     RU_E,                
-    RU_TE,        TD(D_SIGNS),   RU_BE,       RU_YU,         RU_DOT,         GONKI,
-    _______,      _______,       _______,     _______,       _______,
+  [L_EN_S] = LAYOUT_ML(
+    _______,     AG_EXCL,        AG_DQUO,     EN_HASH,       EN_DLR,         AG_PERC,   AG_PLUS,
+    _______,     EN_S_Q,         EN_S_W,      EN_S_E,        EN_S_R,         EN_S_T,    EN_LCBR,
+    AG_SCLN,     EN_S_A,         EN_S_S,      EN_S_D,        EN_S_F,         EN_S_G,    EN_RCBR,
+    _______,     EN_S_Z,         EN_S_X,      EN_S_C,        EN_S_V,         EN_S_B,
+    _______,     _______,        _______,     _______,       _______,
     _______,
-    _______,      _______,       _______
+    _______,     _______,        _______,
+    
+    EN_TILD,     EN_CIRC,        EN_AMPR,     AG_ASTR,       EN_AT,          RU_NUME,   AG_UNDS,
+    EN_LT,       EN_S_Y,         EN_S_U,      EN_S_I,        EN_S_O,         EN_S_P,    _______,
+    EN_GT,       EN_S_H,         EN_S_J,      EN_S_K,        EN_S_L,         KC_SCOLON, KC_QUOTE,
+                 EN_S_N,         EN_S_M,      KC_COMMA,      KC_DOT,         AG_COLN,   _______,
+                                 _______,     _______,       _______,        _______, _______,
+    _______,
+    _______,     _______,        _______
+  ),
+    [L_RU] = LAYOUT_ML(
+    _______,     AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
+    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           TD_EYO,    EN_LBRC,
+    AG_COMM,     RU_F,           RU_Y,        RU_V,          RU_A,           RU_P,      EN_RBRC,
+    _______,     RU_JA,          RU_CH,       RU_S,          RU_M,           RU_I,
+    _______,     _______,        _______,     _______,       _______,
+    _______,
+    _______,     _______,        _______,
+    
+    EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
+    EN_LPRN,     RU_N,           RU_G,        RU_SH,         RU_SC,          RU_Z,      RU_H,
+    EN_RPRN,     RU_R,           RU_O,        RU_L,          RU_D,           RU_ZH,     RU_E,
+                 RU_T,           D_SIGNS,     RU_B,          RU_JU,          AG_DOT,    _______,
+                                 _______,     _______,       _______,        _______,   _______,
+    _______,
+    _______,     _______,        _______
+  ),
+  [L_RU_S] = LAYOUT_ML(
+    _______,     AG_EXCL,        AG_DQUO,     EN_HASH,       EN_DLR,         AG_PERC,   AG_PLUS,
+    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         LSFT(TD_EYO),EN_LCBR,
+    AG_SCLN,     RU_S_F,         RU_S_Y,      RU_S_V,        RU_S_A,         RU_S_P,    EN_RCBR,
+    _______,     RU_S_JA,        RU_S_CH,     RU_S_S,        RU_S_M,         RU_S_I,
+    _______,     _______,        _______,     _______,       _______,
+    _______,
+    _______,     _______,        _______,
+    
+    EN_TILD,     AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
+    EN_LT,       RU_S_N,         RU_S_G,      RU_S_SH,       RU_S_SC,        RU_S_Z,    RU_S_H,
+    EN_GT,       RU_S_R,         RU_S_O,      RU_S_L,        RU_S_D,         RU_S_ZH,   RU_S_E,
+                 RU_S_T,         LSFT(D_SIGNS),RU_S_B,       RU_S_JU,        AG_COLN,   _______,
+                                 _______,     _______,       _______,        _______,   _______,
+    _______,
+    _______,     _______,        _______
   ),
   [L_MOVE] = LAYOUT_ML(
     L_ESCAPE,     KC_F1,         KC_F2,       KC_F3,         KC_F4,          KC_F5,      _______,
@@ -187,16 +223,16 @@ void set_layer_color(int layer) {
 void rgb_matrix_indicators_user(void) {
   if (g_suspend_state || keyboard_config.disable_layer_led) { return; }
   switch (biton32(layer_state)) {
-    case 1:
+    case L_RU || L_RU_S:
       set_layer_color(1);
       break;
-    case 2:
+    case L_MOVE:
       set_layer_color(2);
       break;
-    case 3:
+    case L_PROG:
       set_layer_color(3);
       break;
-    case 4:
+    case L_KEEB:
       set_layer_color(4);
       break;
    default:
