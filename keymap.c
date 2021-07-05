@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,
     _______,     _______,        _______
   ),
-    [L_RU] = LAYOUT_ML(
+  [L_RU] = LAYOUT_ML(
     _______,     AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
     _______,     RU_J,           RU_TS,       RU_U,          RU_K,           D_EYO,    EN_LBRC,
     AG_COMM,     RU_F,           RU_Y,        RU_V,          RU_A,           RU_P,      EN_RBRC,
@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,
     _______,     _______,        _______,
     
-    EN_TILD,     AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
+    EN_TILD,     EN_CIRC,        EN_AMPR,     AG_ASTR,       EN_AT,          RU_NUME,   AG_UNDS,
     EN_LT,       RU_S_N,         RU_S_G,      RU_S_SH,       RU_S_SC,        RU_S_Z,    RU_S_H,
     EN_GT,       RU_S_R,         RU_S_O,      RU_S_L,        RU_S_D,         RU_S_ZH,   RU_S_E,
                  RU_S_T,         LSFT(D_SIGNS),RU_S_B,       RU_S_JU,        AG_COLN,   _______,
