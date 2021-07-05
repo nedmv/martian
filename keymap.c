@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-//#include "keymap_russian.h"
+// #include "keymap_russian.h"
 
 #define CUSTOM_SAFE_RANGE ML_SAFE_RANGE
 #include "lang_shift/include.h"
@@ -76,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
     EN_LPRN,     EN_Y,           EN_U,        EN_I,          EN_O,           EN_P,      XXXXXXX,
-    EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           KC_SCOLON, KC_QUOTE,
-                 EN_N,           EN_M,        KC_COMMA,      KC_DOT,         AG_DOT,    GONKI,
-                                 TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     KC_BSLASH, XXXXXXX,
+    EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           XXXXXXX,   KC_QUOTE,
+                 EN_N,           EN_M,        XXXXXXX,       XXXXXXX,        AG_DOT,    AG_SLSH,
+                                 TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     AG_BSLS,   GONKI,
     XXXXXXX,
     KC_TAB,      KC_ENTER,       SFT_N
   ),
@@ -93,15 +93,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     
     EN_TILD,     EN_CIRC,        EN_AMPR,     AG_ASTR,       EN_AT,          RU_NUME,   AG_UNDS,
     EN_LT,       EN_S_Y,         EN_S_U,      EN_S_I,        EN_S_O,         EN_S_P,    _______,
-    EN_GT,       EN_S_H,         EN_S_J,      EN_S_K,        EN_S_L,         KC_SCOLON, KC_QUOTE,
-                 EN_S_N,         EN_S_M,      KC_COMMA,      KC_DOT,         AG_COLN,   _______,
-                                 _______,     _______,       _______,        _______, _______,
+    EN_GT,       EN_S_H,         EN_S_J,      EN_S_K,        EN_S_L,         _______,   KC_QUOTE,
+                 EN_S_N,         EN_S_M,      _______,       _______,        AG_COLN,   _______,
+                                 _______,     _______,       _______,        EN_PIPE,   _______,
     _______,
     _______,     _______,        _______
   ),
   [L_RU] = LAYOUT_ML(
     _______,     AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
-    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           D_EYO,    EN_LBRC,
+    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           RU_JE,     EN_LBRC,
     AG_COMM,     RU_F,           RU_Y,        RU_V,          RU_A,           RU_P,      EN_RBRC,
     _______,     RU_JA,          RU_CH,       RU_S,          RU_M,           RU_I,
     _______,     _______,        _______,     _______,       _______,
@@ -111,14 +111,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
     EN_LPRN,     RU_N,           RU_G,        RU_SH,         RU_SC,          RU_Z,      RU_H,
     EN_RPRN,     RU_R,           RU_O,        RU_L,          RU_D,           RU_ZH,     RU_E,
-                 RU_T,           D_SIGNS,     RU_B,          RU_JU,          AG_DOT,    _______,
-                                 _______,     _______,       _______,        _______,   _______,
+                 RU_T,           RU_SF,       RU_B,          RU_JU,          AG_DOT,    AG_SLSH,
+                                 _______,     _______,       _______,        AG_BSLS,   _______,
     _______,
     _______,     _______,        _______
   ),
   [L_RU_S] = LAYOUT_ML(
     _______,     AG_EXCL,        AG_DQUO,     EN_HASH,       EN_DLR,         AG_PERC,   AG_PLUS,
-    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         LSFT(D_EYO),EN_LCBR,
+    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         RU_S_JE,   EN_LCBR,
     AG_SCLN,     RU_S_F,         RU_S_Y,      RU_S_V,        RU_S_A,         RU_S_P,    EN_RCBR,
     _______,     RU_S_JA,        RU_S_CH,     RU_S_S,        RU_S_M,         RU_S_I,
     _______,     _______,        _______,     _______,       _______,
@@ -128,8 +128,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_TILD,     EN_CIRC,        EN_AMPR,     AG_ASTR,       EN_AT,          RU_NUME,   AG_UNDS,
     EN_LT,       RU_S_N,         RU_S_G,      RU_S_SH,       RU_S_SC,        RU_S_Z,    RU_S_H,
     EN_GT,       RU_S_R,         RU_S_O,      RU_S_L,        RU_S_D,         RU_S_ZH,   RU_S_E,
-                 RU_S_T,         LSFT(D_SIGNS),RU_S_B,       RU_S_JU,        AG_COLN,   _______,
-                                 _______,     _______,       _______,        _______,   _______,
+                 RU_S_T,         RU_S_SF,     RU_S_B,        RU_S_JU,        AG_COLN,   _______,
+                                 _______,     _______,       _______,        EN_PIPE,   _______,
     _______,
     _______,     _______,        _______
   ),
@@ -224,7 +224,8 @@ void set_layer_color(int layer) {
 void rgb_matrix_indicators_user(void) {
   if (g_suspend_state || keyboard_config.disable_layer_led) { return; }
   switch (biton32(layer_state)) {
-    case L_RU || L_RU_S:
+    case L_RU:
+    case L_RU_S:
       set_layer_color(1);
       break;
     case L_MOVE:
@@ -343,41 +344,20 @@ void D_SNAP_reset(qk_tap_dance_state_t *state, void *user_data) {
     }
     dance_state[0].step = 0;
 }
-void on_D_EYO(qk_tap_dance_state_t *state, void *user_data);
-void D_EYO_finished(qk_tap_dance_state_t *state, void *user_data);
-void D_EYO_reset(qk_tap_dance_state_t *state, void *user_data);
 
-void on_D_EYO(qk_tap_dance_state_t *state, void *user_data) {
-    if(state->count == 3) {
-        tap_code16(RU_JE);
-        tap_code16(RU_JE);
-        tap_code16(RU_JE);
-    }
-    if(state->count > 3) {
-        tap_code16(RU_JE);
-    }
-}
+void D_EYO_finished(qk_tap_dance_state_t *state, void *user_data);
 
 void D_EYO_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[1].step = dance_step(state);
     switch (dance_state[1].step) {
-        case SINGLE_TAP: register_code16(RU_JE); break;
-        case SINGLE_HOLD: register_code16(RU_JO); break;
-        case DOUBLE_TAP: tap_code16(RU_JE); register_code16(RU_JE); break;
-        case DOUBLE_SINGLE_TAP: tap_code16(RU_JE); register_code16(RU_JO);
+        case SINGLE_TAP: lang_shift_tap_key(RU_JE); break;
+        case SINGLE_HOLD: lang_shift_tap_key(RU_JO); break;
+        case DOUBLE_TAP:
+        case DOUBLE_SINGLE_TAP: lang_shift_tap_key(RU_JE); lang_shift_tap_key(RU_JE); break;
+        case DOUBLE_HOLD: lang_shift_tap_key(RU_JE); lang_shift_tap_key(RU_JO);
     }
 }
 
-void D_EYO_reset(qk_tap_dance_state_t *state, void *user_data) {
-    wait_ms(10);
-    switch (dance_state[1].step) {
-        case SINGLE_TAP: unregister_code16(RU_JE); break;
-        case SINGLE_HOLD: unregister_code16(RU_JO); break;
-        case DOUBLE_TAP: unregister_code16(RU_JE); break;
-        case DOUBLE_SINGLE_TAP: unregister_code16(RU_JO); break;
-    }
-    dance_state[1].step = 0;
-}
 void on_D_SIGNS(qk_tap_dance_state_t *state, void *user_data);
 void D_SIGNS_finished(qk_tap_dance_state_t *state, void *user_data);
 void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data);
@@ -452,7 +432,7 @@ void D_QUEUE_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 qk_tap_dance_action_t tap_dance_actions[] = {
         [D_SNAP] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_SNAP, D_SNAP_finished, D_SNAP_reset),
-        [D_EYO] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_EYO, D_EYO_finished, D_EYO_reset),
+        [D_EYO] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, D_EYO_finished, NULL),
         [D_SIGNS] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_SIGNS, D_SIGNS_finished, D_SIGNS_reset),
         [D_QUEUE] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_QUEUE, D_QUEUE_finished, D_QUEUE_reset),
 };
