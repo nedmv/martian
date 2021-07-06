@@ -52,6 +52,11 @@ enum custom_keycodes {
   TO_RU, //Invert state of russian layer and toggle layout.
   L_ESCAPE, // TO L_RU, if it's active. Else TO L_EN.
   LOCK, // Lock screen and move to layer 0.
+  PRESS_E,
+  PRESS_YO,
+  PRESS_SOFT,
+  PRESS_HARD,
+
   CUSTOM_KEYCODES_SAFE_RANGE,
   #undef CUSTOM_SAFE_RANGE
   #define CUSTOM_SAFE_RANGE CUSTOM_KEYCODES_SAFE_RANGE
@@ -76,9 +81,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
     EN_LPRN,     EN_Y,           EN_U,        EN_I,          EN_O,           EN_P,      XXXXXXX,
-    EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           XXXXXXX,   KC_QUOTE,
+    EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           XXXXXXX,   XXXXXXX,
                  EN_N,           EN_M,        XXXXXXX,       XXXXXXX,        AG_DOT,    AG_SLSH,
-                                 TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     AG_BSLS,   GONKI,
+                                 TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     EN_PIPE,   GONKI,
     XXXXXXX,
     KC_TAB,      KC_ENTER,       SFT_N
   ),
@@ -91,17 +96,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,
     _______,     _______,        _______,
     
-    EN_TILD,     EN_CIRC,        EN_AMPR,     AG_ASTR,       EN_AT,          RU_NUME,   AG_UNDS,
+    EN_TILD,     EN_CIRC,        AG_QUES,     AG_ASTR,       EN_AMPR,        EN_AT,     AG_UNDS,
     EN_LT,       EN_S_Y,         EN_S_U,      EN_S_I,        EN_S_O,         EN_S_P,    _______,
-    EN_GT,       EN_S_H,         EN_S_J,      EN_S_K,        EN_S_L,         _______,   KC_QUOTE,
-                 EN_S_N,         EN_S_M,      _______,       _______,        AG_COLN,   _______,
-                                 _______,     _______,       _______,        EN_PIPE,   _______,
+    EN_GT,       EN_S_H,         EN_S_J,      EN_S_K,        EN_S_L,         _______,   _______,
+                 EN_S_N,         EN_S_M,      _______,       _______,        AG_COLN,   AG_BSLS,
+                                 _______,     _______,       _______,        RU_NUME,   _______,
     _______,
     _______,     _______,        _______
   ),
   [L_RU] = LAYOUT_ML(
     _______,     AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
-    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           D_EYO,     EN_LBRC,
+    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           PRESS_YO,     EN_LBRC,
     AG_COMM,     RU_F,           RU_Y,        RU_V,          RU_A,           RU_P,      EN_RBRC,
     _______,     RU_JA,          RU_CH,       RU_S,          RU_M,           RU_I,
     _______,     _______,        _______,     _______,       _______,
@@ -112,24 +117,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_LPRN,     RU_N,           RU_G,        RU_SH,         RU_SC,          RU_Z,      RU_H,
     EN_RPRN,     RU_R,           RU_O,        RU_L,          RU_D,           RU_ZH,     RU_E,
                  RU_T,           D_SIGNS,     RU_B,          RU_JU,          AG_DOT,    AG_SLSH,
-                                 _______,     _______,       _______,        AG_BSLS,   _______,
+                                 _______,     _______,       _______,        EN_PIPE,   _______,
     _______,
     _______,     _______,        _______
   ),
   [L_RU_S] = LAYOUT_ML(
     _______,     AG_EXCL,        AG_DQUO,     EN_HASH,       EN_DLR,         AG_PERC,   AG_PLUS,
-    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         D_EYO,     EN_LCBR,
+    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         PRESS_YO,     EN_LCBR,
     AG_SCLN,     RU_S_F,         RU_S_Y,      RU_S_V,        RU_S_A,         RU_S_P,    EN_RCBR,
     _______,     RU_S_JA,        RU_S_CH,     RU_S_S,        RU_S_M,         RU_S_I,
     _______,     _______,        _______,     _______,       _______,
     _______,
     _______,     _______,        _______,
     
-    EN_TILD,     EN_CIRC,        EN_AMPR,     AG_ASTR,       EN_AT,          RU_NUME,   AG_UNDS,
+    EN_TILD,     EN_CIRC,        AG_QUES,     AG_ASTR,       EN_AMPR,        EN_AT,     AG_UNDS,
     EN_LT,       RU_S_N,         RU_S_G,      RU_S_SH,       RU_S_SC,        RU_S_Z,    RU_S_H,
     EN_GT,       RU_S_R,         RU_S_O,      RU_S_L,        RU_S_D,         RU_S_ZH,   RU_S_E,
-                 RU_S_T,         D_SIGNS,     RU_S_B,        RU_S_JU,        AG_COLN,   _______,
-                                 _______,     _______,       _______,        EN_PIPE,   _______,
+                 RU_S_T,         D_SIGNS,     RU_S_B,        RU_S_JU,        AG_COLN,   AG_BSLS,
+                                 _______,     _______,       _______,        RU_NUME,   _______,
     _______,
     _______,     _______,        _______
   ),
@@ -268,6 +273,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code16(LA_CHNG);
       }
       layer_move(L_EN);
+    }
+    break;
+    case PRESS_YO:
+    if (record->event.pressed) {
+      tap_code16(KC_GRAVE);
     }
     break;
     case RGB_SLD:
