@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     OSL(L_PROG), EN_Q,           EN_W,        EN_E,          EN_R,           EN_T,      EN_LBRC,
     AG_COMM,     EN_A,           EN_S,        EN_D,          EN_F,           EN_G,      EN_RBRC,
     LA_CHNG,     EN_Z,           EN_X,        EN_C,          EN_V,           EN_B,
-    XXXXXXX,     TD(D_SNAP),     KC_LGUI,     KC_LALT,       KC_LCTRL,
+    XXXXXXX,     TD(D_SNAP),     WIN_0,       ALT_0,         CTRL_0,
     XXXXXXX,
     KC_SPACE,    KC_BSPACE,      KC_DELETE,
     
@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_RU] = LAYOUT_ML(
     _______,     AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
-    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           RU_JE,     EN_LBRC,
+    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           D_EYO,     EN_LBRC,
     AG_COMM,     RU_F,           RU_Y,        RU_V,          RU_A,           RU_P,      EN_RBRC,
     _______,     RU_JA,          RU_CH,       RU_S,          RU_M,           RU_I,
     _______,     _______,        _______,     _______,       _______,
@@ -111,14 +111,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
     EN_LPRN,     RU_N,           RU_G,        RU_SH,         RU_SC,          RU_Z,      RU_H,
     EN_RPRN,     RU_R,           RU_O,        RU_L,          RU_D,           RU_ZH,     RU_E,
-                 RU_T,           RU_SF,       RU_B,          RU_JU,          AG_DOT,    AG_SLSH,
+                 RU_T,           D_SIGNS,     RU_B,          RU_JU,          AG_DOT,    AG_SLSH,
                                  _______,     _______,       _______,        AG_BSLS,   _______,
     _______,
     _______,     _______,        _______
   ),
   [L_RU_S] = LAYOUT_ML(
     _______,     AG_EXCL,        AG_DQUO,     EN_HASH,       EN_DLR,         AG_PERC,   AG_PLUS,
-    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         RU_S_JE,   EN_LCBR,
+    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         D_EYO,     EN_LCBR,
     AG_SCLN,     RU_S_F,         RU_S_Y,      RU_S_V,        RU_S_A,         RU_S_P,    EN_RCBR,
     _______,     RU_S_JA,        RU_S_CH,     RU_S_S,        RU_S_M,         RU_S_I,
     _______,     _______,        _______,     _______,       _______,
@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_TILD,     EN_CIRC,        EN_AMPR,     AG_ASTR,       EN_AT,          RU_NUME,   AG_UNDS,
     EN_LT,       RU_S_N,         RU_S_G,      RU_S_SH,       RU_S_SC,        RU_S_Z,    RU_S_H,
     EN_GT,       RU_S_R,         RU_S_O,      RU_S_L,        RU_S_D,         RU_S_ZH,   RU_S_E,
-                 RU_S_T,         RU_S_SF,     RU_S_B,        RU_S_JU,        AG_COLN,   _______,
+                 RU_S_T,         D_SIGNS,     RU_S_B,        RU_S_JU,        AG_COLN,   _______,
                                  _______,     _______,       _______,        EN_PIPE,   _______,
     _______,
     _______,     _______,        _______
@@ -155,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      LALT(KC_F4),   CASH(KC_W),  CASH(KC_E),    LALT(KC_TAB),   CASH(KC_T), _______,
     _______,      CASH(KC_A),    CASH(KC_S),  CASH(KC_D),    CASH(KC_F),     CASH(KC_G), _______,
     _______,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     CASH(KC_B),
-    _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,
+    _______,      TD(D_SNAP),    _______,     _______,       _______,
     _______,        
     KC_SPACE,     KC_BSPACE,     KC_DELETE,
 
@@ -172,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      _______, TOGGLE_LAYER_COLOR,_______,       RGB_SLD,        _______,    _______,
     _______,      RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_TOG,        RGB_SPI,    _______,
     LA_SYNC,      RGB_HUD,       RGB_SAD,     RGB_VAD,       _______,        RGB_SPD,
-    _______,      TD(D_SNAP),    KC_LGUI,     KC_LALT,       KC_LCTRL,       
+    _______,      TD(D_SNAP),    _______,     _______,       _______,       
     _______,
     KC_SPACE,     KC_BSPACE,     KC_DELETE,
 
@@ -350,46 +350,37 @@ void D_EYO_finished(qk_tap_dance_state_t *state, void *user_data);
 void D_EYO_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[1].step = dance_step(state);
     switch (dance_state[1].step) {
-        case SINGLE_TAP: lang_shift_tap_key(RU_JE); break;
-        case SINGLE_HOLD: lang_shift_tap_key(RU_JO); break;
+        case SINGLE_TAP: tap_code(KC_T); break;
+        case SINGLE_HOLD: tap_code(KC_GRAVE); break;
         case DOUBLE_TAP:
-        case DOUBLE_SINGLE_TAP: lang_shift_tap_key(RU_JE); lang_shift_tap_key(RU_JE); break;
-        case DOUBLE_HOLD: lang_shift_tap_key(RU_JE); lang_shift_tap_key(RU_JO);
+        case DOUBLE_SINGLE_TAP: tap_code(KC_T); tap_code(KC_T); break;
+        case DOUBLE_HOLD: tap_code(KC_T); tap_code(KC_GRAVE);
     }
+    dance_state[1].step = 0;
 }
 
-void on_D_SIGNS(qk_tap_dance_state_t *state, void *user_data);
 void D_SIGNS_finished(qk_tap_dance_state_t *state, void *user_data);
 void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data);
-
-void on_D_SIGNS(qk_tap_dance_state_t *state, void *user_data) {
-    if(state->count == 3) {
-        tap_code16(RU_SF);
-        tap_code16(RU_SF);
-        tap_code16(RU_SF);
-    }
-    if(state->count > 3) {
-        tap_code16(RU_SF);
-    }
-}
 
 void D_SIGNS_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[3].step = dance_step(state);
     switch (dance_state[3].step) {
-        case SINGLE_TAP: register_code16(RU_SF); break;
-        case SINGLE_HOLD: register_code16(RU_HD); break;
-        case DOUBLE_TAP: tap_code16(RU_SF); register_code16(RU_SF); break;
-        case DOUBLE_SINGLE_TAP: tap_code16(RU_SF); register_code16(RU_HD);
+        case SINGLE_TAP: register_code(KC_M); break;
+        case SINGLE_HOLD: register_code(KC_RBRACKET); break;
+        case DOUBLE_TAP:
+        case DOUBLE_SINGLE_TAP: tap_code(KC_M); register_code(KC_M); break;
+        case DOUBLE_HOLD: tap_code(KC_M); register_code(KC_RBRACKET);
     }
 }
 
 void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[3].step) {
-        case SINGLE_TAP: unregister_code16(RU_SF); break;
-        case SINGLE_HOLD: unregister_code16(RU_HD); break;
-        case DOUBLE_TAP: unregister_code16(RU_SF); break;
-        case DOUBLE_SINGLE_TAP: unregister_code16(RU_HD); break;
+        case SINGLE_TAP: unregister_code(KC_M); break;
+        case SINGLE_HOLD: unregister_code(KC_RBRACKET); break;
+        case DOUBLE_TAP:
+        case DOUBLE_SINGLE_TAP: unregister_code(KC_M); break;
+        case DOUBLE_HOLD: unregister_code(KC_RBRACKET); break;
     }
     dance_state[3].step = 0;
 }
@@ -433,7 +424,7 @@ void D_QUEUE_reset(qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
         [D_SNAP] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_SNAP, D_SNAP_finished, D_SNAP_reset),
         [D_EYO] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, D_EYO_finished, NULL),
-        [D_SIGNS] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_SIGNS, D_SIGNS_finished, D_SIGNS_reset),
+        [D_SIGNS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, D_SIGNS_finished, D_SIGNS_reset),
         [D_QUEUE] = ACTION_TAP_DANCE_FN_ADVANCED(on_D_QUEUE, D_QUEUE_finished, D_QUEUE_reset),
 };
 
