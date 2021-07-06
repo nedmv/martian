@@ -90,13 +90,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_LT,       EN_S_Y,         EN_S_U,      EN_S_I,        EN_S_O,         EN_S_P,    _______,
     EN_GT,       EN_S_H,         EN_S_J,      EN_S_K,        EN_S_L,         _______,   _______,
                  EN_S_N,         EN_S_M,      _______,       _______,        AG_COLN,   AG_BSLS,
-                                 _______,     _______,       _______,        RU_NUME,   _______,
+                                 _______,     _______,       _______,        EN_QUOT,   _______,
     _______,
     _______,     _______,        _______
   ),
   [L_RU] = LAYOUT_ML(
     _______,     AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
-    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           TD(D_EYO),     EN_LBRC,
+    _______,     RU_J,           RU_TS,       RU_U,          RU_K,           TD(D_EYO), EN_LBRC,
     AG_COMM,     RU_F,           RU_Y,        RU_V,          RU_A,           RU_P,      EN_RBRC,
     _______,     RU_JA,          RU_CH,       RU_S,          RU_M,           RU_I,
     _______,     _______,        _______,     _______,       _______,
@@ -106,14 +106,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
     EN_LPRN,     RU_N,           RU_G,        RU_SH,         RU_SC,          RU_Z,      RU_H,
     EN_RPRN,     RU_R,           RU_O,        RU_L,          RU_D,           RU_ZH,     RU_E,
-                 RU_T,           TD(D_SIGNS),     RU_B,          RU_JU,          AG_DOT,    AG_SLSH,
+                 RU_T,           TD(D_SIGNS), RU_B,          RU_JU,          AG_DOT,    AG_SLSH,
                                  _______,     _______,       _______,        EN_PIPE,   _______,
     _______,
     _______,     _______,        _______
   ),
   [L_RU_S] = LAYOUT_ML(
     _______,     AG_EXCL,        AG_DQUO,     EN_HASH,       EN_DLR,         AG_PERC,   AG_PLUS,
-    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         TD(D_EYO),  EN_LCBR,
+    _______,     RU_S_J,         RU_S_TS,     RU_S_U,        RU_S_K,         TD(D_EYO), EN_LCBR,
     AG_SCLN,     RU_S_F,         RU_S_Y,      RU_S_V,        RU_S_A,         RU_S_P,    EN_RCBR,
     _______,     RU_S_JA,        RU_S_CH,     RU_S_S,        RU_S_M,         RU_S_I,
     _______,     _______,        _______,     _______,       _______,
@@ -123,8 +123,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_TILD,     EN_CIRC,        AG_QUES,     AG_ASTR,       EN_AMPR,        EN_AT,     AG_UNDS,
     EN_LT,       RU_S_N,         RU_S_G,      RU_S_SH,       RU_S_SC,        RU_S_Z,    RU_S_H,
     EN_GT,       RU_S_R,         RU_S_O,      RU_S_L,        RU_S_D,         RU_S_ZH,   RU_S_E,
-                 RU_S_T,         TD(D_SIGNS),     RU_S_B,        RU_S_JU,        AG_COLN,   AG_BSLS,
-                                 _______,     _______,       _______,        RU_NUME,   _______,
+                 RU_S_T,         TD(D_SIGNS), S_B,           RU_S_JU,        AG_COLN,   AG_BSLS,
+                                 _______,     _______,       _______,        EN_QUOT,   _______,
     _______,
     _______,     _______,        _______
   ),
