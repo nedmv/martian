@@ -65,8 +65,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     OSL(L_PROG), EN_Q,           EN_W,        EN_E,          EN_R,           EN_T,      EN_LBRC,
     AG_COMM,     EN_A,           EN_S,        EN_D,          EN_F,           EN_G,      EN_RBRC,
     LA_CHNG,     EN_Z,           EN_X,        EN_C,          EN_V,           EN_B,
-    XXXXXXX,     TD(D_SNAP),     WIN_0,       ALT_0,         CTRL_0,
-    XXXXXXX,
+    XXXXXXX,     XXXXXXX,        WIN_0,       ALT_0,         CTRL_0,
+    SFT_N,
     KC_SPACE,    KC_BSPACE,      KC_DELETE,
     
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           XXXXXXX,   XXXXXXX,
                  EN_N,           EN_M,        XXXXXXX,       XXXXXXX,        AG_DOT,    AG_SLSH,
                                  TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     EN_PIPE,   GONKI,
-    XXXXXXX,
+    TD(D_SNAP),
     KC_TAB,      KC_ENTER,       SFT_N
   ),
   [L_EN_S] = LAYOUT_ML(
