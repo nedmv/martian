@@ -123,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_TILD,     EN_CIRC,        AG_QUES,     AG_ASTR,       EN_AMPR,        EN_AT,     AG_UNDS,
     EN_LT,       RU_S_N,         RU_S_G,      RU_S_SH,       RU_S_SC,        RU_S_Z,    RU_S_H,
     EN_GT,       RU_S_R,         RU_S_O,      RU_S_L,        RU_S_D,         RU_S_ZH,   RU_S_E,
-                 RU_S_T,         TD(D_SIGNS), S_B,           RU_S_JU,        AG_COLN,   AG_BSLS,
+                 RU_S_T,         TD(D_SIGNS), RU_S_B,        RU_S_JU,        AG_COLN,   AG_BSLS,
                                  _______,     _______,       _______,        EN_QUOT,   _______,
     _______,
     _______,     _______,        _______
