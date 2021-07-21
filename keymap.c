@@ -64,8 +64,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESCAPE,   AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
     OSL(L_PROG), EN_Q,           EN_W,        EN_E,          EN_R,           EN_T,      EN_LBRC,
     AG_COMM,     EN_A,           EN_S,        EN_D,          EN_F,           EN_G,      EN_RBRC,
-    LA_CHNG,     EN_Z,           EN_X,        EN_C,          EN_V,           EN_B,
-    XXXXXXX,     XXXXXXX,        WIN_0,       ALT_0,         CTRL_0,
+    AG_SDOT,     EN_Z,           EN_X,        EN_C,          EN_V,           EN_B,
+    LA_CHNG,     XXXXXXX,        WIN_0,       ALT_0,         CTRL_0,
     SFT_N,
     KC_SPACE,    KC_BSPACE,      KC_DELETE,
     
