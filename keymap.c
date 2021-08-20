@@ -53,6 +53,7 @@ enum custom_keycodes {
   TO_RU, //Invert state of russian layer and toggle layout.
   L_ESCAPE, // TO L_RU, if it's active. Else TO L_EN.
   LOCK, // Lock screen and move to layer 0.
+  COPY_URL, // Copy current browser URL to clipboard.
 
   CUSTOM_KEYCODES_SAFE_RANGE,
   #undef CUSTOM_SAFE_RANGE
@@ -147,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_PROG] = LAYOUT_ML(
     L_ESCAPE,     _______,       _______,     _______,       _______,        _______,    _______,
-    _______,      LALT(KC_F4),   CASH(KC_W),  CASH(KC_E),    LALT(KC_TAB),   CASH(KC_T), _______,
+    _______,      LALT(KC_F4),   CASH(KC_W),  CASH(KC_E),    LALT(KC_TAB),   CASH(KC_T), COPY_URL,
     _______,      CASH(KC_A),    CASH(KC_S),  CASH(KC_D),    CASH(KC_F),     CASH(KC_G), _______,
     _______,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     CASH(KC_B),
     _______,      TD(D_SNAP),    _______,     _______,       _______,
@@ -269,7 +270,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         rgblight_mode(1);
       }
-      return false;
+    break;
+    case COPY_URL:
+      if (record->event.pressed) {
+        register_code(KC_LCTRL);
+        tap_code(KC_L);
+        tap_code(KC_C);
+        unregister_code(KC_LCTRL);
+      }
+    
+    return false;
   }
   return true;
 }
