@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
     EN_LPRN,     EN_Y,           EN_U,        EN_I,          EN_O,           EN_P,      XXXXXXX,
     EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           XXXXXXX,   XXXXXXX,
-                 EN_N,           EN_M,        XXXXXXX,       XXXXXXX,        AG_DOT,    AG_SLSH,
+                 EN_N,           EN_M,        EN_QUOT,       XXXXXXX,        AG_DOT,    AG_SLSH,
                                  TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     EN_PIPE,   GONKI,
     S(KC_TAB),
     KC_TAB,      KC_ENTER,       SFT_N
