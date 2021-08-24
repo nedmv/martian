@@ -165,9 +165,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_KEEB] = LAYOUT_ML(
     L_ESCAPE,     _______,       _______,     _______,       _______,        _______,    LED_LEVEL,
-    _______,      _______, TOGGLE_LAYER_COLOR,_______,       RGB_SLD,        _______,    _______,
-    _______,      RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_TOG,        RGB_SPI,    _______,
-    LA_SYNC,      RGB_HUD,       RGB_SAD,     RGB_VAD,       _______,        RGB_SPD,
+    _______,      _______, TOGGLE_LAYER_COLOR,_______,       RGB_MOD,        _______,    _______,
+    _______,      RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_SLD,        RGB_SPI,    _______,
+    LA_SYNC,      RGB_HUD,       RGB_SAD,     RGB_VAD,       RGB_TOG,        RGB_SPD,
     _______,      TD(D_SNAP),    _______,     _______,       _______,       
     _______,
     KC_SPACE,     KC_BSPACE,     KC_DELETE,
