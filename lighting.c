@@ -3,6 +3,8 @@
 #define COMMA ,
 
 #define COLOR_OFF {0 COMMA 0 COMMA 0}
+#define _________ COLOR_OFF
+
 #define COLOR_RED {0 COMMA 255 COMMA 255}
 #define COLOR_GREEN {85 COMMA 255 COMMA 255}
 #define COLOR_BLUE {170 COMMA 255 COMMA 255}
@@ -56,89 +58,72 @@
 }
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [L_EN] = LEDS_ML(
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-                       COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-                                      COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF
-    ),
     [L_RU] = LEDS_ML(
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,
         COLOR_RU,
         COLOR_RU,      COLOR_RU,      COLOR_RU,
 
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-                       COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-                                      COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+                       _________,     _________,     _________,     _________,     _________,     _________,
+                                      _________,     _________,     _________,     _________,     _________,
         COLOR_RU,
         COLOR_RU,      COLOR_RU,      COLOR_RU
     ), 
     [L_MOVE] = LEDS_ML(
-        COLOR_OFF,     COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
+        _________,     COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,
+        _________,
+        _________,     _________,     _________,
 
-        COLOR_OFF,     COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_YELLOW,  COLOR_YELLOW,  COLOR_YELLOW,  COLOR_YELLOW,  COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_ORANGE,  COLOR_ORANGE,  COLOR_ORANGE,  COLOR_ORANGE,  COLOR_OFF,
-                       COLOR_OFF,     COLOR_PURPLE,  COLOR_PURPLE,  COLOR_PURPLE,  COLOR_PURPLE,  COLOR_OFF,
-                                      COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF
+        _________,     COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   _________,
+        _________,     _________,     COLOR_YELLOW,  COLOR_YELLOW,  COLOR_YELLOW,  COLOR_YELLOW,  _________,
+        _________,     _________,     COLOR_ORANGE,  COLOR_ORANGE,  COLOR_ORANGE,  COLOR_ORANGE,  _________,
+                       _________,     COLOR_PURPLE,  COLOR_PURPLE,  COLOR_PURPLE,  COLOR_PURPLE,  _________,
+                                      _________,     _________,     _________,     _________,     _________,
+        _________,
+        _________,     _________,     _________
     ), 
 
     [L_PROG] = LEDS_ML(
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_RED,     COLOR_OFF,     COLOR_OFF,     COLOR_YELLOW,  COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     COLOR_RED,     _________,     _________,     COLOR_YELLOW,  _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,
         COLOR_PROG,
         COLOR_PROG,    COLOR_PROG,    COLOR_PROG,
 
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_RED,     COLOR_GREEN,   COLOR_YELLOW,  COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_GREEN,   COLOR_GREEN,   COLOR_GREEN,   COLOR_OFF,     COLOR_OFF,
-                       COLOR_OFF,     COLOR_DBLUE,   COLOR_GREEN,   COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-                                      COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     COLOR_RED,     COLOR_GREEN,   COLOR_YELLOW,  _________,     _________,
+        _________,     _________,     COLOR_GREEN,   COLOR_GREEN,   COLOR_GREEN,   _________,     _________,
+                       _________,     COLOR_DBLUE,   COLOR_GREEN,   _________,     _________,     _________,
+                                      _________,     _________,     _________,     _________,     _________,
         COLOR_PROG,
         COLOR_PROG,    COLOR_PROG,    COLOR_PROG
     ), 
     [L_KEEB] = LEDS_ML(
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,
         COLOR_KEEB,
         COLOR_KEEB,    COLOR_KEEB,    COLOR_KEEB,
 
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_RED,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-        COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-                       COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
-                                      COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,     COLOR_OFF,
+        _________,     _________,     _________,     _________,     _________,     _________,     COLOR_RED,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+                       _________,     _________,     _________,     _________,     _________,     _________,
+                                      _________,     _________,     _________,     _________,     _________,
         COLOR_KEEB,
         COLOR_KEEB,    COLOR_KEEB,    COLOR_KEEB
     ),
@@ -164,15 +149,8 @@ void set_layer_color(int layer) {
 void rgb_matrix_indicators_user(void) {
   if (g_suspend_state || keyboard_config.disable_layer_led) { return; }
   switch (biton32(layer_state)) {
-    case L_EN:
-      set_layer_color(L_EN);
-      break;
-    case L_EN_S:
-      set_layer_color(L_EN);
-      break;
+    //L_EN and L_EN_S intentionally have no designated cases here
     case L_RU:
-      set_layer_color(L_RU);
-      break;
     case L_RU_S:
       set_layer_color(L_RU);
       break;
