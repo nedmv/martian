@@ -189,12 +189,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       //Delay is needed for page loading.
       SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)) SS_DELAY(1000) SS_LCTL(SS_TAP(X_ENTER)));
     }
-    break;
+    return false;
     case L_ESCAPE:
     if (record->event.pressed) {
       layer_move(IS_LAYER_ON(L_RU)?L_RU:L_EN);
     }
-    break;
+    return false;
     case LOCK:
     if (record->event.pressed) {
       SEND_STRING(SS_LGUI(SS_TAP(X_L)));
@@ -203,12 +203,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       layer_move(L_EN);
     }
-    break;
+    return false;
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
       }
-    break;
+    return false;
     case COPY_URL:
       if (record->event.pressed) {
         register_code(KC_LCTRL);
@@ -216,7 +216,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code(KC_C);
         unregister_code(KC_LCTRL);
       }
-    
     return false;
   }
   return true;
