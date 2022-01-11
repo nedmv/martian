@@ -8,9 +8,10 @@ enum layers {
   L_RU, // Base Russian layer, based on ЙЦУКЕН
   L_RU_S, // Shifted Russian layer.
 
-  L_MOVE, // Movement layer (arrows, mouse, F1-F12)
+  L_MOVE, // Movement layer (arrows, F1-F12)
   L_PROG, // Program layer (Meh hotkeys, media)
   L_KEEB, // Keyboard layer (lighting, sound, reset)
+  L_MOUSE, // Mouse level
 };
 
 #endif // LAYERS_H

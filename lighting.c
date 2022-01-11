@@ -17,6 +17,7 @@
 #define COLOR_KEEB {30 COMMA 96 COMMA 255}
 #define COLOR_RU COLOR_BLUE
 #define COLOR_PROG COLOR_GREEN
+#define COLOR_MOUSE COLOR_YELLOW
 
 #define LEDS_ML( \
     k00, k01, k02, k03, k04, k05, k06, \
@@ -127,6 +128,23 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
         COLOR_KEEB,
         COLOR_KEEB,    COLOR_KEEB,    COLOR_KEEB
     ),
+    [L_MOUSE] = LEDS_ML(
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     COLOR_DBLUE,   COLOR_YELLOW,  COLOR_YELLOW,  COLOR_DBLUE,   _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,
+        COLOR_MOUSE,
+        COLOR_MOUSE,   COLOR_MOUSE,   COLOR_MOUSE,
+
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     _________,     COLOR_ORANGE,  COLOR_ORANGE,  COLOR_ORANGE,  COLOR_ORANGE,  _________,
+                       _________,     _________,     _________,     _________,     _________,     _________,
+                                      _________,     _________,     _________,     _________,     _________,
+        COLOR_MOUSE,
+        COLOR_MOUSE,   COLOR_MOUSE,   COLOR_MOUSE
+    ),
 };
 
 void set_layer_color(int layer) {
@@ -162,6 +180,9 @@ void rgb_matrix_indicators_user(void) {
       break;
     case L_KEEB:
       set_layer_color(L_KEEB);
+      break;
+    case L_MOUSE:
+      set_layer_color(L_MOUSE);
       break;
    default:
     if (rgb_matrix_get_flags() == LED_FLAG_NONE)
