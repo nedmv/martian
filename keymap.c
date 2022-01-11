@@ -156,9 +156,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     L_ESCAPE,     _______,       _______,     _______,       _______,        _______,    LED_LEVEL,
     _______,      _______, TOGGLE_LAYER_COLOR,_______,       RGB_MOD,        _______,    _______,
     _______,      RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_SLD,        RGB_SPI,    _______,
-    LA_SYNC,      RGB_HUD,       RGB_SAD,     RGB_VAD,       RGB_TOG,        RGB_SPD,
+    _______,      RGB_HUD,       RGB_SAD,     RGB_VAD,       RGB_TOG,        RGB_SPD,
     _______,      TD(D_SNAP),    _______,     _______,       _______,       
-    _______,
+    LA_SYNC,
     KC_SPACE,     KC_BSPACE,     KC_DELETE,
 
     _______,      _______,       _______,     _______,       _______,        _______,    RESET,  
