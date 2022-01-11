@@ -233,7 +233,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       SEND_STRING(SS_LGUI(SS_TAP(X_L)));
       if(IS_LAYER_ON(L_RU)) {
-        tap_code16(LA_CHNG);
+        keyrecord_t record;
+        record.event.pressed = true;
+        lang_shift_process_record(LA_CHNG, &record);
       }
       layer_move(L_EN);
     }
