@@ -158,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,      RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_SLD,        RGB_SPI,    XXXXXXX,
     _______,      RGB_HUD,       RGB_SAD,     RGB_VAD,       RGB_TOG,        RGB_SPD,
     LA_SYNC,      XXXXXXX,       _______,     _______,       _______,       
-    _______,
+    TO(L_GAME),
     _______,      _______,       _______,
 
     XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    RESET,  
@@ -185,6 +185,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  _______,     _______,       _______,        XXXXXXX,    XXXXXXX,
     _______,
     _______,      _______,       _______
+  ),
+  [L_GAME] = LAYOUT_ML(
+    KC_ESC,       KC_1,          KC_2,        KC_3,          KC_4,           KC_5,       XXXXXXX,
+    KC_TAB,       KC_Q,          KC_W,        KC_E,          KC_R,           KC_T,       KC_F5,
+    KC_CAPS,      KC_A,          KC_S,        KC_D,          KC_F,           KC_G,       XXXXXXX,
+    KC_LSFT,      KC_Z,          KC_X,        KC_C,          KC_V,           KC_B,
+    KC_LCTL,      KC_LGUI,       KC_LALT,     XXXXXXX,       XXXXXXX,       
+    L_ESCAPE,
+    KC_SPACE,     KC_BSPACE,     KC_ENTER,
+
+    XXXXXXX,      KC_6,          KC_7,        KC_8,          KC_9,           KC_0,       XXXXXXX,  
+    XXXXXXX,      KC_Y,          KC_U,        KC_I,          KC_O,           KC_P,       XXXXXXX, 
+    XXXXXXX,      KC_H,          KC_J,        KC_K,          KC_L,           XXXXXXX,    XXXXXXX, 
+                  KC_N,          KC_M,        XXXXXXX,       KC_COMM,        KC_DOT,     XXXXXXX,
+                                 XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
+    XXXXXXX,
+    KC_SPACE,     KC_ENTER,      KC_TAB
   ),
   // [L_STUB] = LAYOUT_ML(
   //   L_ESCAPE,     XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,

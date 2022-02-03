@@ -12,6 +12,7 @@ enum layers {
   L_PROG, // Program layer (Meh hotkeys, media)
   L_KEEB, // Keyboard layer (lighting, sound, reset)
   L_MOUSE, // Mouse level
+  L_GAME, // Game level (partially mimic ANSI layout)
 };
 
 #endif // LAYERS_H
