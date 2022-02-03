@@ -162,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      _______,       _______,
 
     XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    RESET,  
-    XXXXXXX,      LA_CAPS,       LA_ALSH,     LA_CTSH,       LA_WISP,        XXXXXXX,    XXXXXXX, 
+    XXXXXXX,      XXXXXXX,       LA_CAPS,     LA_ALSH,       LA_CTSH,        LA_WISP,    XXXXXXX, 
     XXXXXXX,      XXXXXXX,       AU_TOG,      XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX, 
                   MU_MOD,        MU_TOG,      XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
                                  _______,     _______,       _______,        XXXXXXX,    LOCK,
