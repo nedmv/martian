@@ -144,10 +144,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        
     _______,      _______,       _______,
 
-    XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX, 
-    XXXXXXX,    TD(D_QUEUE), KC_AUDIO_MUTE, KC_AUDIO_VOL_UP, CASH(KC_O),     XXXXXXX,    XXXXXXX, 
-    XXXXXXX,  KC_UP,KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,XXXXXXX, XXXXXXX, 
-                  KC_DOWN,      CASH(KC_M),KC_AUDIO_VOL_DOWN,XXXXXXX,        XXXXXXX,    XXXXXXX, 
+    XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
+    XXXXXXX,    TD(D_QUEUE), KC_AUDIO_MUTE, KC_AUDIO_VOL_UP, CASH(KC_O),     KC_P8,      XXXXXXX,
+    XXXXXXX,  KC_UP,KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_P2,   XXXXXXX,
+                  KC_DOWN,      CASH(KC_M),KC_AUDIO_VOL_DOWN,XXXXXXX,        XXXXXXX,    XXXXXXX,
                                 _______,      _______,       _______,        XXXXXXX,    LOCK,
     _______,
     _______,      _______,       _______
