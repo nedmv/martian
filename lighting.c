@@ -128,6 +128,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
         COLOR_KEEB,
         COLOR_KEEB,    COLOR_KEEB,    COLOR_KEEB
     ),
+#ifdef MOUSE_LAYER
     [L_MOUSE] = LEDS_ML(
         _________,     _________,     _________,     _________,     _________,     _________,     _________,
         _________,     _________,     _________,     _________,     _________,     _________,     _________,
@@ -145,6 +146,8 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
         COLOR_MOUSE,
         COLOR_MOUSE,   COLOR_MOUSE,   COLOR_MOUSE
     ),
+#endif
+#ifdef GAME_LAYER
     [L_GAME] = LEDS_ML(
         _________,     _________,     _________,     _________,     _________,     _________,     _________,
         _________,     _________,     COLOR_BLUE,    _________,     _________,     _________,     COLOR_YELLOW,
@@ -162,6 +165,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
         _________,
         COLOR_BLUE,    COLOR_GREEN,   COLOR_YELLOW
     ),
+#endif
 };
 
 void set_layer_color(int layer) {
@@ -198,12 +202,16 @@ void rgb_matrix_indicators_user(void) {
     case L_KEEB:
       set_layer_color(L_KEEB);
       break;
+#ifdef MOUSE_LAYER
     case L_MOUSE:
       set_layer_color(L_MOUSE);
       break;
+#endif
+#ifdef GAME_LAYER
     case L_GAME:
       set_layer_color(L_GAME);
       break;
+#endif
    default:
     if (rgb_matrix_get_flags() == LED_FLAG_NONE)
       rgb_matrix_set_color_all(0, 0, 0);

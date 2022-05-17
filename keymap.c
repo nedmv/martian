@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESCAPE,   AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
     OSL(L_PROG), EN_Q,           EN_W,        EN_E,          EN_R,           EN_T,      EN_LBRC,
     AG_CMSP,     EN_A,           EN_S,        EN_D,          EN_F,           EN_G,      EN_RBRC,
-    TT(L_MOUSE), EN_Z,           EN_X,        EN_C,          EN_V,           EN_B,
+    LA_CHNG, EN_Z,           EN_X,        EN_C,          EN_V,           EN_B,
     LA_CHNG,     AG_COMM,        WIN_0,       ALT_0,         CTRL_0,
     SFT_N,
     KC_SPACE,    KC_BSPACE,      KC_DELETE,
@@ -158,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,      RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_SLD,        RGB_SPI,    XXXXXXX,
     _______,      RGB_HUD,       RGB_SAD,     RGB_VAD,       RGB_TOG,        RGB_SPD,
     LA_SYNC,      XXXXXXX,       _______,     _______,       _______,       
-    TO(L_GAME),
+    _______,
     _______,      _______,       _______,
 
     XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    RESET,  
@@ -169,6 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,
     _______,      _______,       _______
   ),
+#ifdef MOUSE_LAYER
   [L_MOUSE] = LAYOUT_ML(
     L_ESCAPE,     XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
     _______,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
@@ -186,6 +187,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,
     _______,      _______,       _______
   ),
+#endif
+#ifdef GAME_LAYER
   [L_GAME] = LAYOUT_ML(
     KC_ESC,       KC_1,          KC_2,        KC_3,          KC_4,           KC_5,       XXXXXXX,
     KC_TAB,       KC_Q,          KC_W,        KC_E,          KC_R,           KC_T,       KC_F5,
@@ -203,6 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,
     KC_SPACE,     KC_ENTER,      KC_TAB
   ),
+#endif
   // [L_STUB] = LAYOUT_ML(
   //   L_ESCAPE,     XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
   //   XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,

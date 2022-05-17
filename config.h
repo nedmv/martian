@@ -12,3 +12,5 @@
 
 #define LANG_CHANGE_DEFAULT LANG_CHANGE_CAPS
 
+// #define MOUSE_LAYER
+// #define GAME_LAYER
