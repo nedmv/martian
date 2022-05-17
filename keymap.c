@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
     EN_LPRN,     EN_Y,           EN_U,        EN_I,          EN_O,           EN_P,      XXXXXXX,
-    EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           XXXXXXX,   XXXXXXX,
+    EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           XXXXXXX,   EN_QUOT,
                  EN_N,           EN_M,        EN_QUOT,       XXXXXXX,        AG_DOT,    AG_SLSH,
                                  TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     EN_PIPE,   XXXXXXX,
     S(KC_TAB),
@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     
     EN_TILD,     EN_CIRC,        AG_QUES,     AG_ASTR,       EN_AMPR,        EN_AT,     AG_UNDS,
     EN_LT,       EN_S_Y,         EN_S_U,      EN_S_I,        EN_S_O,         EN_S_P,    _______,
-    EN_GT,       EN_S_H,         EN_S_J,      EN_S_K,        EN_S_L,         _______,   _______,
+    EN_GT,       EN_S_H,         EN_S_J,      EN_S_K,        EN_S_L,         _______,   AG_DQUO,
                  EN_S_N,         EN_S_M,      _______,       _______,        AG_COLN,   AG_BSLS,
                                  _______,     _______,       _______,        EN_QUOT,   _______,
     _______,
