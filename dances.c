@@ -1,6 +1,7 @@
 enum tap_dance_codes {
   D_SNAP, // [CUSTOM] Window snapshot on tap - Area snapshot on hold 
   D_EYO, // Russian "Е" on tap, russian "Ё" on hold
+  D_EHYO, // Russian "Э" on tap, russian "Ё" on double tap
   D_SIGNS, // Russian "Ь" on tap, russian "Ъ" on double tap
   D_QUEUE, // [CUSTOM] Add song to the end of queue on tap - Add song to the beginning of queue on hold
   TAP_DANCE_RANGE,
@@ -82,6 +83,29 @@ void D_EYO_reset(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[D_EYO].step = 0;
 }
 
+void D_EHYO_finished(qk_tap_dance_state_t *state, void *user_data);
+void D_EHYO_reset(qk_tap_dance_state_t *state, void *user_data);
+
+void D_EHYO_finished(qk_tap_dance_state_t *state, void *user_data) {
+    dance_state[D_EHYO].step = dance_step(state);
+    switch (dance_state[D_EHYO].step) {
+        case SINGLE_TAP: register_code(KC_QUOT); break;
+        case DOUBLE_TAP:
+        case DOUBLE_SINGLE_TAP: register_code(KC_GRAVE);
+    }
+}
+
+void D_EHYO_reset(qk_tap_dance_state_t *state, void *user_data) {
+    wait_ms(10);
+    switch (dance_state[D_EHYO].step) {
+        case SINGLE_TAP: unregister_code(KC_QUOT); break;
+        case DOUBLE_TAP:
+        case DOUBLE_SINGLE_TAP: unregister_code(KC_GRAVE);
+    }
+    dance_state[D_EHYO].step = 0;
+}
+
+
 
 void D_SIGNS_finished(qk_tap_dance_state_t *state, void *user_data);
 void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data);
@@ -128,6 +152,7 @@ void D_QUEUE_reset(qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[TAP_DANCE_RANGE] = {
         [D_SNAP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, D_SNAP_finished, D_SNAP_reset),
         [D_EYO] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, D_EYO_finished, D_EYO_reset),
+        [D_EHYO] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, D_EHYO_finished, D_EHYO_reset),
         [D_SIGNS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, D_SIGNS_finished, D_SIGNS_reset),
         [D_QUEUE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, D_QUEUE_finished, D_QUEUE_reset),
 };
