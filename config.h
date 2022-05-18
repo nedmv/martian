@@ -12,5 +12,7 @@
 
 #define LANG_CHANGE_DEFAULT LANG_CHANGE_CAPS
 
+#define COMPOSE_KEY KC_LGUI
+
 // #define MOUSE_LAYER
 // #define GAME_LAYER

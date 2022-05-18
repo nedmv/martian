@@ -43,6 +43,8 @@ enum custom_keycodes {
   L_ESCAPE, // TO L_RU, if it's active. Else TO L_EN.
   LOCK, // Lock screen and move to layer 0.
   COPY_URL, // Copy current browser URL to clipboard.
+  MDASH_SP, // MDASH with space
+  NB_SPACE, // non-breaking space
 
   CUSTOM_KEYCODES_SAFE_RANGE,
   #undef CUSTOM_SAFE_RANGE
@@ -63,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     EN_LPRN,     EN_Y,           EN_U,        EN_I,          EN_O,           EN_P,      XXXXXXX,
     EN_RPRN,     EN_H,           EN_J,        EN_K,          EN_L,           XXXXXXX,   EN_QUOT,
                  EN_N,           EN_M,        EN_QUOT,       XXXXXXX,        AG_DOT,    AG_SLSH,
-                                 TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     EN_PIPE,   XXXXXXX,
+                                 TT(L_MOVE),  TT(L_PROG),    TT(L_KEEB),     EN_PIPE,   MDASH_SP,
     S(KC_TAB),
     KC_TAB,      KC_ENTER,       SFT_N
   ),
@@ -74,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,     EN_S_Z,         EN_S_X,      EN_S_C,        EN_S_V,         EN_S_B,
     _______,     _______,        _______,     _______,       _______,
     _______,
-    _______,     _______,        _______,
+    NB_SPACE,    _______,        _______,
     
     EN_TILD,     EN_CIRC,        AG_QUES,     AG_ASTR,       EN_AMPR,        EN_AT,     AG_UNDS,
     EN_LT,       EN_S_Y,         EN_S_U,      EN_S_I,        EN_S_O,         EN_S_P,    _______,
@@ -91,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,     RU_JA,          RU_CH,       RU_S,          RU_M,           RU_I,
     _______,     _______,        _______,     _______,       _______,
     _______,
-    _______,     _______,        _______,
+    KC_SPACE,    _______,        _______,
     
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
     EN_LPRN,     RU_N,           RU_G,        RU_SH,         RU_SC,          RU_Z,      RU_H,
@@ -108,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,     RU_S_JA,        RU_S_CH,     RU_S_S,        RU_S_M,         RU_S_I,
     _______,     _______,        _______,     _______,       _______,
     _______,
-    _______,     _______,        _______,
+    NB_SPACE,    _______,        _______,
     
     EN_TILD,     EN_CIRC,        AG_QUES,     AG_ASTR,       EN_AMPR,        EN_AT,     AG_UNDS,
     EN_LT,       RU_S_N,         RU_S_G,      RU_S_SH,       RU_S_SC,        RU_S_Z,    RU_S_H,
@@ -272,6 +274,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code(KC_L);
         tap_code(KC_C);
         unregister_code(KC_LCTRL);
+      }
+    return false;
+    case MDASH_SP: // ComposeKey - - - Space 
+      if (record->event.pressed) {
+        tap_code(COMPOSE_KEY);
+        tap_code(KC_MINS);
+        tap_code(KC_MINS);
+        tap_code(KC_MINS);
+        tap_code(KC_SPACE);
+      }
+      return false;
+    case NB_SPACE: // ComposeKey Space Space
+      if (record->event.pressed) {
+        tap_code(COMPOSE_KEY);
+        tap_code(KC_SPACE);
+        tap_code(KC_SPACE);
       }
     return false;
   }
