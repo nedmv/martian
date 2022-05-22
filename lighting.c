@@ -78,8 +78,8 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     ), 
     [L_MOVE] = LEDS_ML(
         _________,     COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   COLOR_DBLUE,   _________,
-        _________,     _________,     _________,     _________,     _________,     _________,     _________,
-        _________,     _________,     _________,     _________,     _________,     _________,     _________,
+        _________,     COLOR_YELLOW,  COLOR_YELLOW,  COLOR_YELLOW,  COLOR_YELLOW,  _________,     _________,
+        _________,     COLOR_ORANGE,  COLOR_ORANGE,  COLOR_ORANGE,  COLOR_ORANGE,  _________,     _________,
         _________,     _________,     _________,     _________,     _________,     _________,
         _________,     _________,     _________,     _________,     _________,
         _________,

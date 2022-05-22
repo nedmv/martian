@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESCAPE,   AG_1,           AG_2,        AG_3,          AG_4,           AG_5,      AG_EQL,
     OSL(L_PROG), EN_Q,           EN_W,        EN_E,          EN_R,           EN_T,      EN_LBRC,
     AG_CMSP,     EN_A,           EN_S,        EN_D,          EN_F,           EN_G,      EN_RBRC,
-    LA_CHNG,     EN_Z,           EN_X,        EN_C,          EN_V,           EN_B,
+    TT(L_MOVE),  EN_Z,           EN_X,        EN_C,          EN_V,           EN_B,
     LA_CHNG,     MDASH_SP,       WIN_0,       ALT_0,         CTRL_0,
     SFT_N,
     KC_SPACE,    KC_BSPACE,      KC_DELETE,
@@ -122,8 +122,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_MOVE] = LAYOUT_ML(
     L_ESCAPE,     KC_F1,         KC_F2,       KC_F3,         KC_F4,          KC_F5,      XXXXXXX,
-    _______,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
-    XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
+    _______,   LWIN(KC_HOME), LWIN(KC_PGUP), LWIN(KC_PGDOWN), LWIN(KC_END),  XXXXXXX,    XXXXXXX,
+    XXXXXXX,      LWIN(KC_LEFT), LWIN(KC_UP), LWIN(KC_DOWN), LWIN(KC_UP),    XXXXXXX,    XXXXXXX,
     _______,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,
     XXXXXXX,      XXXXXXX,       _______,     _______,       _______,
     _______,
@@ -138,15 +138,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      _______,       _______
   ),
   [L_PROG] = LAYOUT_ML(
-    L_ESCAPE,     XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    LALT(KC_F4),
-    _______,      XXXXXXX,       CASH(KC_W),  CASH(KC_E),    LALT(KC_TAB),   CASH(KC_T), COPY_URL,
+    L_ESCAPE,     CASH(KC_1),    CASH(KC_2),  CASH(KC_3),    CASH(KC_4),     CASH(KC_5), LALT(KC_F4),
+    _______,      CASH(KC_Q),    CASH(KC_W),  CASH(KC_E),    LALT(KC_TAB),   CASH(KC_T), COPY_URL,
     XXXXXXX,      CASH(KC_A),    CASH(KC_S),  CASH(KC_D),    CASH(KC_F),     CASH(KC_G), XXXXXXX,
     _______,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     CASH(KC_B),
     XXXXXXX,      XXXXXXX,       _______,     _______,       _______,
     _______,        
     _______,      _______,       _______,
 
-    XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
+    XXXXXXX,    CASH(KC_6),      CASH(KC_7),  CASH(KC_8),    CASH(KC_9),     CASH(KC_0), XXXXXXX,
     XXXXXXX,    TD(D_QUEUE), KC_AUDIO_MUTE, KC_AUDIO_VOL_UP, CASH(KC_O),     KC_P8,      XXXXXXX,
     XXXXXXX,  KC_UP,KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_P2,   XXXXXXX,
                   KC_DOWN,      CASH(KC_M),KC_AUDIO_VOL_DOWN,XXXXXXX,        XXXXXXX,    XXXXXXX,
