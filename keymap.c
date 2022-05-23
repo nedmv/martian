@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,     EN_S_Z,         EN_S_X,      EN_S_C,        EN_S_V,         EN_S_B,
     _______,     AG_COMM,        _______,     _______,       _______,
     _______,
-    NB_SPACE,    _______,        _______,
+    _______,    _______,        _______,
     
     EN_TILD,     EN_CIRC,        AG_QUES,     AG_ASTR,       EN_AMPR,        EN_AT,     AG_UNDS,
     EN_LT,       EN_S_Y,         EN_S_U,      EN_S_I,        EN_S_O,         EN_S_P,    _______,
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,     RU_JA,          RU_CH,       RU_S,          RU_M,           RU_I,
     _______,     MDASH_SP,       _______,     _______,       _______,
     _______,
-    KC_SPACE,    _______,        _______,
+    _______,    _______,        _______,
     
     EN_GRV,      AG_6,           AG_7,        AG_8,          AG_9,           AG_0,      AG_MINS,
     EN_LPRN,     RU_N,           RU_G,        RU_SH,         RU_SC,          RU_Z,      RU_H,
@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,     RU_S_JA,        RU_S_CH,     RU_S_S,        RU_S_M,         RU_S_I,
     _______,     AG_COMM,        _______,     _______,       _______,
     _______,
-    NB_SPACE,    _______,        _______,
+    _______,    _______,        _______,
     
     EN_TILD,     EN_CIRC,        AG_QUES,     AG_ASTR,       EN_AMPR,        EN_AT,     AG_UNDS,
     EN_LT,       RU_S_N,         RU_S_G,      RU_S_SH,       RU_S_SC,        RU_S_Z,    RU_S_H,
@@ -123,15 +123,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_MOVE] = LAYOUT_ML(
     L_ESCAPE,     KC_F1,         KC_F2,       KC_F3,         KC_F4,          KC_F5,      XXXXXXX,
     _______,   LWIN(KC_HOME), LWIN(KC_PGUP), LWIN(KC_PGDOWN), LWIN(KC_END),  XXXXXXX,    XXXXXXX,
-    XXXXXXX,      LWIN(KC_LEFT), LWIN(KC_UP), LWIN(KC_DOWN), LWIN(KC_UP),    XXXXXXX,    XXXXXXX,
+    AG_COMM,      LWIN(KC_LEFT), LWIN(KC_UP), LWIN(KC_DOWN), LWIN(KC_UP),    XXXXXXX,    XXXXXXX,
     _______,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,
     XXXXXXX,      XXXXXXX,       _______,     _______,       _______,
     _______,
-    _______,      _______,       _______,
+    NB_SPACE,      _______,       _______,
 
-    KC_F11,       KC_F6,         KC_F7,       KC_F8,         KC_F9,          KC_F10,     KC_F12,
-    XXXXXXX,      XXXXXXX,       KC_HOME,     KC_PGUP,       KC_PGDOWN,      KC_END,     XXXXXXX, 
-    XXXXXXX,      XXXXXXX,       KC_LEFT,     KC_UP,         KC_DOWN,        KC_RIGHT,   XXXXXXX,   
+    XXXXXXX,      KC_F6,         KC_F7,       KC_F8,         KC_F9,          KC_F10,     MDASH_SP,
+    KC_F11,       XXXXXXX,       KC_HOME,     KC_PGUP,       KC_PGDOWN,      KC_END,     XXXXXXX, 
+    KC_F12,       XXXXXXX,       KC_LEFT,     KC_UP,         KC_DOWN,        KC_RIGHT,   XXXXXXX,   
                   XXXXXXX,    LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_DOWN), LCTL(KC_RIGHT), XXXXXXX,              
                                  _______,      _______,       _______,       XXXXXXX,    LOCK,  
     TD(D_SNAP),
