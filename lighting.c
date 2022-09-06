@@ -186,7 +186,7 @@ void set_layer_color(int layer) {
 }
 
 void rgb_matrix_indicators_user(void) {
-  if (g_suspend_state || keyboard_config.disable_layer_led) { return; }
+  if (rgb_matrix_get_suspend_state() || keyboard_config.disable_layer_led) { return; }
   switch (biton32(layer_state)) {
     //L_EN and L_EN_S intentionally have no designated cases here
     case L_RU:

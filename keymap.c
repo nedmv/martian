@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+
 #include "layers.h"
-// #include "keymap_russian.h"
 #include "dances.c"
 #include "lighting.c"
 
