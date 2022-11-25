@@ -21,3 +21,4 @@ ln -s <repo-location> <qmk-location>/keyboards/moonlander/keymaps/martian
 qmk compile -kb moonlander -km martian
 qmk flash -kb moonlander -km martian
 ```
+This can also be done by using `make.sh` and `flash.sh` scripts.
