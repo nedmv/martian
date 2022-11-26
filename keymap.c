@@ -40,7 +40,7 @@ enum custom_keycodes {
   RGB_SLD = CUSTOM_SAFE_RANGE,
   GONKI, // Start next race on klavogonki.ru
   TO_RU, //Invert state of russian layer and toggle layout.
-  L_ESCAPE, // TO L_RU, if it's active. Else TO L_EN.
+  CANCEL, // TO L_RU, if it's active. Else TO L_EN.
   LOCK, // Lock screen and move to layer 0.
   COPY_URL, // Copy current browser URL to clipboard.
   MDASH_SP, // MDASH with space
@@ -201,7 +201,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             '------+------+------'    '------+------+------'
  */
   [L_MOVE] = LAYOUT_ML(
-    L_ESCAPE,     KC_F1,         KC_F2,       KC_F3,         KC_F4,          KC_F5,      XXXXXXX,
+    CANCEL,       KC_F1,         KC_F2,       KC_F3,         KC_F4,          KC_F5,      XXXXXXX,
     _______,      KC_HOME,       KC_PGUP,     KC_PGDOWN,     KC_END,         XXXXXXX,    XXXXXXX,
     AG_COMM,      KC_LEFT,       KC_UP,       KC_DOWN,       KC_RIGHT,       XXXXXXX,    XXXXXXX,
     _______,      LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_DOWN), LCTL(KC_RIGHT), XXXXXXX,
@@ -235,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             '------+------+------'    '------+------+------'
  */
   [L_PROG] = LAYOUT_ML(
-    L_ESCAPE,     CASH(KC_1),    CASH(KC_2),  CASH(KC_3),    CASH(KC_4),     CASH(KC_5), LALT(KC_F4),
+    CANCEL,       CASH(KC_1),    CASH(KC_2),  CASH(KC_3),    CASH(KC_4),     CASH(KC_5), LALT(KC_F4),
     _______,      CASH(KC_Q),    CASH(KC_W),  CASH(KC_E),    LALT(KC_TAB),   CASH(KC_T), COPY_URL,
     XXXXXXX,      CASH(KC_A),    CASH(KC_S),  CASH(KC_D),    CASH(KC_F),     CASH(KC_G), XXXXXXX,
     _______,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     CASH(KC_B),
@@ -268,7 +268,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             '------+------+------'    '------+------+------'
  */
   [L_KEEB] = LAYOUT_ML(
-    L_ESCAPE,     XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    LED_LEVEL,
+    CANCEL,       XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    LED_LEVEL,
     _______,      XXXXXXX, TOGGLE_LAYER_COLOR,XXXXXXX,       RGB_MOD,        XXXXXXX,    XXXXXXX,
     XXXXXXX,      RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_SLD,        RGB_SPI,    XXXXXXX,
     _______,      RGB_HUD,       RGB_SAD,     RGB_VAD,       RGB_TOG,        RGB_SPD,
@@ -286,7 +286,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 #ifdef MOUSE_LAYER
   [L_MOUSE] = LAYOUT_ML(
-    L_ESCAPE,     XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
+    CANCEL,       XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
     _______,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
     XXXXXXX,      KC_MS_BTN2, KC_MS_WH_DOWN,  KC_MS_WH_UP,   KC_MS_BTN1,     XXXXXXX,    XXXXXXX,
     _______,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,
@@ -311,7 +311,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_CAPS,      KC_A,          KC_S,        KC_D,          KC_F,           KC_G,       XXXXXXX,
     KC_LSFT,      KC_Z,          KC_X,        KC_C,          KC_V,           KC_B,
     KC_LCTL,      KC_LGUI,       KC_LALT,     XXXXXXX,       XXXXXXX,       
-    L_ESCAPE,
+    CANCEL,
     KC_SPACE,     KC_BSPACE,     KC_ENTER,
 
     XXXXXXX,      KC_6,          KC_7,        KC_8,          KC_9,           KC_0,       XXXXXXX,  
@@ -340,7 +340,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             '------+------+------'    '------+------+------'
  */
   // [L_STUB] = LAYOUT_ML(
-  //   L_ESCAPE,     XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
+  //   CANCEL,       XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
   //   XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
   //   _______,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
   //   XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,
@@ -377,7 +377,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)) SS_DELAY(1000) SS_LCTL(SS_TAP(X_ENTER)));
     }
     return false;
-    case L_ESCAPE:
+    case CANCEL:
     if (record->event.pressed) {
       layer_move(IS_LAYER_ON(L_RU)?L_RU:L_EN);
     }
