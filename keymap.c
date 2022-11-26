@@ -187,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * MOVE
  * .------------------------------------------------.    .------------------------------------------------.
- * |CANCEL|  F1  |  F2  |  F3  |  F4  |  F5  |      |    |      |  F6  |  F7  |  F8  |  F9  |  F10 | —+SPC|
+ * |CANCEL|  F1  |  F2  |  F3  |  F4  |  F5  |  №   |    |      |  F6  |  F7  |  F8  |  F9  |  F10 | —+SPC|
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
  * | PROG1| HOME | PGUP |PGDOWN|  END |      |      |    |  F11 |      | HOME | PGUP |PGDOWN|  END |      |
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
@@ -201,7 +201,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             '------+------+------'    '------+------+------'
  */
   [L_MOVE] = LAYOUT_ML(
-    CANCEL,       KC_F1,         KC_F2,       KC_F3,         KC_F4,          KC_F5,      XXXXXXX,
+    CANCEL,       KC_F1,         KC_F2,       KC_F3,         KC_F4,          KC_F5,      RU_NUME,
     _______,      KC_HOME,       KC_PGUP,     KC_PGDOWN,     KC_END,         XXXXXXX,    XXXXXXX,
     AG_COMM,      KC_LEFT,       KC_UP,       KC_DOWN,       KC_RIGHT,       XXXXXXX,    XXXXXXX,
     _______,      LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_DOWN), LCTL(KC_RIGHT), XXXXXXX,
