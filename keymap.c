@@ -2,11 +2,12 @@
 #include "version.h"
 
 #include "layers.h"
-#include "dances.c"
 #include "lighting.c"
 
 #define CUSTOM_SAFE_RANGE ML_SAFE_RANGE
 #include "lang_shift/include.h"
+
+#include "dances.c"
 
 #define CASH(KC)  LALT(LCTL(LSFT(KC))) // MEH does not work as expected
 
@@ -61,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
  * | ,+SPC|  a   |  s   |  d   |  f   |  g   |  ]   |    |  )   |  h   |  j   |  k   |  l   |      |  '   |
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
- * |      |  z   |  x   |  c   |  v   |  b   |      |    |      |  n   |  m   |  '   |      |  .   |  /   |
+ * | CAPS |  z   |  x   |  c   |  v   |  b   |      |    |      |  n   |  m   |  '   |      |  .   |  /   |
  * |------+------+------+------+------+------'      |    |      '------|------+------+------+------+------|
  * | LANG | CMPS | WIN  | ALT  | CTRL |    SHIFT    |    |  SHIFT+TAB  | MOVE | PROG | KEEB |  |   |      |
  * '------+------+------+------+------+-------------|    |-------------+------+------+------+------+------'
@@ -94,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
  * |  ;   |  A   |  S   |  D   |  F   |  G   |  }   |    |  >   |  H   |  J   |  K   |  L   |      |  "   |
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
- * |      |  Z   |  X   |  C   |  V   |  B   |      |    |      |  N   |  M   |  '   |      |  :   |  \   |
+ * | CAPS |  Z   |  X   |  C   |  V   |  B   |      |    |      |  N   |  M   |  '   |      |  :   |  \   |
  * |------+------+------+------+------+------'      |    |      '------|------+------+------+------+------|
  * | LANG | CMPS | WIN  | ALT  | CTRL |    SHIFT    |    |  SHIFT+TAB  | MOVE | PROG | KEEB |  '   |      |
  * '------+------+------+------+------+-------------|    |-------------+------+------+------+------+------'
@@ -127,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
  * | ,+SPC|  ф   |  ы   |  в   |  а   |  п   |  ]   |    |  )   |  р   |  о   |  л   |  д   |  ж   |  э   |
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
- * |      |  я   |  ч   |  с   |  м   |  и   |      |    |      |  т   |  ьъ  |  б   |  ю   |  .   |  /   |
+ * | CAPS |  я   |  ч   |  с   |  м   |  и   |      |    |      |  т   |  ьъ  |  б   |  ю   |  .   |  /   |
  * |------+------+------+------+------+------'      |    |      '------|------+------+------+------+------|
  * | LANG | CMPS | WIN  | ALT  | CTRL |    SHIFT    |    |  SHIFT+TAB  | MOVE | PROG | KEEB |  |   |  ё   |
  * '------+------+------+------+------+-------------|    |-------------+------+------+------+------+------'
@@ -160,7 +161,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
  * |  ;   |  Ф   |  Ы   |  В   |  А   |  П   |  }   |    |  >   |  Р   |  О   |  Л   |  Д   |  Ж   |  Э   |
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
- * |      |  Я   |  Ч   |  С   |  М   |  И   |      |    |      |  Т   |  ЬЪ  |  Б   |  Ю   |  :   |  \   |
+ * | CAPS |  Я   |  Ч   |  С   |  М   |  И   |      |    |      |  Т   |  ЬЪ  |  Б   |  Ю   |  :   |  \   |
  * |------+------+------+------+------+------'      |    |      '------|------+------+------+------+------|
  * | LANG | CMPS | WIN  | ALT  | CTRL |    SHIFT    |    |  SHIFT+TAB  | MOVE | PROG | KEEB |  '   |  Ё   |
  * '------+------+------+------+------+-------------|    |-------------+------+------+------+------+------'
@@ -204,7 +205,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CANCEL,       KC_F1,         KC_F2,       KC_F3,         KC_F4,          KC_F5,      RU_NUME,
     _______,      KC_HOME,       KC_PGUP,     KC_PGDOWN,     KC_END,         XXXXXXX,    XXXXXXX,
     AG_COMM,      KC_LEFT,       KC_UP,       KC_DOWN,       KC_RIGHT,       XXXXXXX,    XXXXXXX,
-    _______,      LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_DOWN), LCTL(KC_RIGHT), XXXXXXX,
+    XXXXXXX,      LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_DOWN), LCTL(KC_RIGHT), XXXXXXX,
     XXXXXXX,      XXXXXXX,       _______,     _______,       _______,
     _______,
     _______,      _______,       _______,
@@ -238,7 +239,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CANCEL,       CASH(KC_1),    CASH(KC_2),  CASH(KC_3),    CASH(KC_4),     CASH(KC_5), LALT(KC_F4),
     _______,      CASH(KC_Q),    CASH(KC_W),  CASH(KC_E),    LALT(KC_TAB),   CASH(KC_T), COPY_URL,
     XXXXXXX,      CASH(KC_A),    CASH(KC_S),  CASH(KC_D),    CASH(KC_F),     CASH(KC_G), XXXXXXX,
-    _______,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     CASH(KC_B),
+    XXXXXXX,      CASH(KC_Z),    CASH(KC_X),  CASH(KC_C),    CASH(KC_V),     CASH(KC_B),
     XXXXXXX,      XXXXXXX,       _______,     _______,       _______,
     _______,        
     _______,      _______,       _______,
@@ -271,7 +272,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CANCEL,       XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    LED_LEVEL,
     _______,      XXXXXXX, TOGGLE_LAYER_COLOR,XXXXXXX,       RGB_MOD,        XXXXXXX,    XXXXXXX,
     XXXXXXX,      RGB_HUI,       RGB_SAI,     RGB_VAI,       RGB_SLD,        RGB_SPI,    XXXXXXX,
-    _______,      RGB_HUD,       RGB_SAD,     RGB_VAD,       RGB_TOG,        RGB_SPD,
+    XXXXXXX,      RGB_HUD,       RGB_SAD,     RGB_VAD,       RGB_TOG,        RGB_SPD,
     LA_SYNC,      XXXXXXX,       _______,     _______,       _______,       
     _______,
     _______,      _______,       _______,
@@ -289,7 +290,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CANCEL,       XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
     _______,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
     XXXXXXX,      KC_MS_BTN2, KC_MS_WH_DOWN,  KC_MS_WH_UP,   KC_MS_BTN1,     XXXXXXX,    XXXXXXX,
-    _______,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,
+    XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,
     XXXXXXX,      XXXXXXX,       _______,     _______,       _______,       
     _______,
     _______,      _______,       _______,

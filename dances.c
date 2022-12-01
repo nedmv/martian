@@ -113,18 +113,18 @@ void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data);
 void D_SIGNS_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[D_SIGNS].step = dance_step(state);
     switch (dance_state[D_SIGNS].step) {
-        case SINGLE_TAP: register_code(KC_M); break;
+        case SINGLE_TAP: lang_shift_press_key(RU_SF, true); break;
         case DOUBLE_TAP:
-        case DOUBLE_SINGLE_TAP: register_code(KC_RBRACKET);
+        case DOUBLE_SINGLE_TAP: lang_shift_press_key(RU_HD, true);
     }
 }
 
 void D_SIGNS_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[D_SIGNS].step) {
-        case SINGLE_TAP: unregister_code(KC_M); break;
+        case SINGLE_TAP: lang_shift_press_key(RU_SF, false); break;
         case DOUBLE_TAP:
-        case DOUBLE_SINGLE_TAP: unregister_code(KC_RBRACKET);
+        case DOUBLE_SINGLE_TAP: lang_shift_press_key(RU_HD, false);
     }
     dance_state[D_SIGNS].step = 0;
 }
