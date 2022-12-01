@@ -257,7 +257,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * .------------------------------------------------.    .------------------------------------------------.
  * |CANCEL|      |      |      |      |      | LED  |    |      |      |      |      |      |      | RESET|
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
- * | PROG1|      | COLOR|      |RGBMOD|      |      |    |      |      |LA_CPS|LA_ALS|LA_CTS|LA_WSP|      |
+ * | PROG1|      | COLOR|      |RGBMOD|      |      |    |      |      |LA_CPS|LA_SAL|LA_SCT|LA_WSP|      |
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
  * |      | HUE+ | SAT+ | BRI+ |RGBSLD|RGBSPI|      |    |      |      | AUDIO|      |      |      |      |
  * |------+------+------+------+------+------+------|    |------+------+------+------+------+------+------|
@@ -278,7 +278,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,      _______,       _______,
 
     XXXXXXX,      XXXXXXX,       XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,    RESET,  
-    XXXXXXX,      XXXXXXX,       LA_CAPS,     LA_ALSH,       LA_CTSH,        LA_WISP,    XXXXXXX, 
+    XXXXXXX,      XXXXXXX,       LA_CAPS,     LA_SHAL,       LA_SHCT,        LA_WISP,    XXXXXXX, 
     XXXXXXX,      XXXXXXX,       AU_TOG,      XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX, 
                   MU_MOD,        MU_TOG,      XXXXXXX,       XXXXXXX,        XXXXXXX,    XXXXXXX,
                                  _______,     _______,       _______,        XXXXXXX,    LOCK,
